@@ -1,0 +1,36 @@
+.sidePanel {
+	width:15%;
+	float:left;
+	clear:both;
+}
+
+#table1st {
+	width:50%;
+}
+
+#table2nd {
+	width:25%;
+}
+
+#table3rd {
+	width:25%;
+}
+
+#resourceTable tbody tr td {
+	padding:5px;
+}
+
+#resourceTable tbody tr td:first-child {
+	text-transform:capitalize;
+}
+
+.caption {
+	font-size: 1.25rem;
+	font-weight: 300;
+	margin-bottom: 30px;
+}
+
+.header {
+	color: #ee6e73;
+	font-weight: 300;
+}

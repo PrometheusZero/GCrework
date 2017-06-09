@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+	<head>
+		<meta http-equiv="content-type" content="text/html"; charset="utf-8">
+		<title>TEST</title>
+		<link type="text/css" rel="stylesheet" href="resources/materialize/css/materialize.min.css" media="screen,projection" />
+		<link type="text/css" rel="stylesheet" href="GCrework.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	</head>
+
+	<body>
+		<header>
+				<nav>
+					<div class="nav-wrapper blue-grey">
+						<div class="container">
+							<a href="#" class="brand-logo">TEST</a>
+						</div>
+					</div>
+				</nav>
+		</header>
+		
+		
+		<main>
+		
+			<div class="sidePanel">
+				<table id="resourceTable">
+					<thead>
+						<tr>
+							<th id="table1st">Resource</th>
+							<th id="table2nd">Quantity</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="grey-text text-darken-3">
+							<td>Space</td>
+							<td id="space-Total">10</td>
+						</tr>
+						<tr class="grey-text text-darken-3">
+							<td>recruitOffice</td>
+							<td id="recruitOffice-Total">0</td>
+						</tr>
+						<tr class="grey-text text-darken-3">
+							<td>rifleFactory</td>
+							<td id="rifleFactory-Total">0</td>
+						</tr>
+						<tr><td colspan="3">&nbsp;</td></tr>
+						<tr class="green-text text-darken-4">
+							<td>conscript</td>
+							<td id="conscript-Total">0</td>
+						</tr>
+						<tr class="green-text text-darken-4">
+							<td>soldier</td>
+							<td id="soldier-Total">0</td>
+						</tr>
+						<tr class="green-text text-darken-4">
+							<td>autogunner</td>
+							<td id="autogunner-Total">0</td>
+						</tr>
+						<tr class="green-text text-darken-4">
+							<td>corporal</td>
+							<td id="corporal-Total">0</td>
+						</tr>
+						<tr class="green-text text-darken-4">
+							<td>sergeant</td>
+							<td id="sergeant-Total">0</td>
+						</tr>
+						<tr><td colspan="3">&nbsp;</td></tr>
+						<tr class="brown-text text-darken-4">
+							<td>fireTeam</td>
+							<td id="fireTeam-Total">0</td>
+						</tr>
+						<tr class="brown-text text-darken-4">
+							<td>riflesquad</td>
+							<td id="rifleSquad-Total">0</td>
+						</tr>
+						<tr><td colspan="3">&nbsp;</td></tr>
+						<tr class="red-text text-darken-4">
+							<td>rifle</td>
+							<td id="rifle-Total">0</td>
+						</tr>
+						<tr class="red-text text-darken-4">
+							<td>automaticRifle</td>
+							<td id="automaticRifle-Total">0</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="container">
+				<div class="row">
+					<div class="col s12">
+						<ul class="tabs">
+							<li class="tab col s2"><a href="#tab1">Personnel</a></li>
+							<li class="tab col s2"><a href="#tab2">Weapons</a></li>
+							<li class="tab col s2"><a href="#tab3">Muster</a></li>
+							<li class="tab col s2"><a href="#tab4">Options</a></li>
+						</ul>
+					</div>
+					
+					<!------------------>
+					<!-- PERSONEL TAB -->
+					<!------------------>
+					<div id="tab1" class="col s12">
+						<div class="container">
+							<div class="row">
+								<div class="col s12">
+									<div class="section">
+										<p class="caption">This tab contains what you need to generate boots on the ground.</p>
+										<h2 class="header">Personnel</h2>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<a id="buyRecruitOffice" class="waves-effect waves-light btn-large">Recruit Office</a>
+								</div>
+								<div class="col s6">
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<a id="buyBarracks" class="waves-effect waves-light btn-large">Barracks</a>
+									<a id="buyDrillSergeant" class="waves-effect waves-light btn-large">Drill Sgt</a>
+								</div>
+								<div class="col s6">
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!------------------>
+					<!-- WEAPONS TAB -->
+					<!------------------>
+					<div id="tab2" class="col s12">
+						<div class="container">
+							<div class="row">
+								<div class="col s12">
+									<div class="section">
+										<p class="caption">This tab contains what you need to generate firearms for your troops.</p>
+										<h2 class="header">Weapons</h2>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<a id="buyRifleFactory" class="waves-effect waves-light btn-large">Rifle Factory</a>
+								</div>
+								<div class="col s6">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!------------------>
+					<!-- MUSTER TAB -->
+					<!------------------>
+					<div id="tab3" class="col s12">
+						<div class="container">
+							<div class="row">
+								<div class="col s12">
+									<div class="section">
+										<p class="caption">This tab contains what you need to go to war!</p>
+										<h2 class="header">Muster</h2>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<a id="musterSoldier" class="waves-effect waves-light btn-large">Soldier</a>
+									<a id="musterAutogunner" class="waves-effect waves-light btn-large">Autogunner</a>
+									<a id="musterCorporal" class="waves-effect waves-light btn-large">Corporal</a>
+									<a id="musterSergeant" class="waves-effect waves-light btn-large">Sergeant</a>
+									<a id="musterFireTeam" class="waves-effect waves-light btn-large">Fire Team</a>
+									<a id="musterRifleSquad" class="waves-effect waves-light btn-large">Rifle Squad</a>
+								</div>
+								<div class="col s6">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!------------------>
+					<!-- OPTIONS TAB -->
+					<!------------------>
+					<div id="tab4" class="col s12">Area 4</div>
+				</div>
+			</div>
+		
+		</main>
+		
+		
+		<footer>
+		
+		</footer>
+		
+		<script type="text/javascript" src="resources/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="resources/materialize/js/materialize.min.js"></script>
+		<script type="text/javascript" src="GCrework.js"></script>
+	</body>
+</html>
