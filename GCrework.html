@@ -34,7 +34,7 @@
 					<tbody>
 						<tr class="grey-text text-darken-3">
 							<td>Space</td>
-							<td id="space-Total">10</td>
+							<td id="space-Total">0</td>
 						</tr>
 						<tr class="grey-text text-darken-3">
 							<td>recruitOffice</td>
@@ -106,14 +106,15 @@
 							<div class="row">
 								<div class="col s12">
 									<div class="section">
-										<p class="caption">This tab contains what you need to generate boots on the ground.</p>
+										<span class="caption">This tab contains what you need to organise your troops.</span>
 										<h2 class="header">Personnel</h2>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col s6">
-									<a id="buyRecruitOffice" class="waves-effect waves-light btn-large">Recruit Office</a>
+									<a id="generateConscript" class="waves-effect waves-light btn-large">Generate Conscript</a>
+									<a id="generateSoldier" class="waves-effect waves-light btn-large">Form Soldier</a>
 								</div>
 								<div class="col s6">
 									
@@ -121,8 +122,7 @@
 							</div>
 							<div class="row">
 								<div class="col s6">
-									<a id="buyBarracks" class="waves-effect waves-light btn-large">Barracks</a>
-									<a id="buyDrillSergeant" class="waves-effect waves-light btn-large">Drill Sgt</a>
+									<a id="generateFireTeam" class="waves-effect waves-light btn-large">Form Fire Team</a>
 								</div>
 								<div class="col s6">
 								</div>
@@ -131,21 +131,24 @@
 					</div>
 					
 					<!------------------>
-					<!-- WEAPONS TAB -->
+					<!-- BUILDINGS TAB -->
 					<!------------------>
 					<div id="tab2" class="col s12">
 						<div class="container">
 							<div class="row">
 								<div class="col s12">
 									<div class="section">
-										<p class="caption">This tab contains what you need to generate firearms for your troops.</p>
-										<h2 class="header">Weapons</h2>
+										<span class="caption">This tab contains buildings that operate automatically.</span>
+										<h2 class="header">Buildings</h2>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col s6">
+									<a id="buyRecruitOffice" class="waves-effect waves-light btn-large">Recruit Office</a>
 									<a id="buyRifleFactory" class="waves-effect waves-light btn-large">Rifle Factory</a>
+									<a id="buyBarracks" class="waves-effect waves-light btn-large">Barracks</a>
+									<a id="buyDrillSergeant" class="waves-effect waves-light btn-large">Drill Sgt</a>
 								</div>
 								<div class="col s6">
 									
@@ -162,22 +165,61 @@
 							<div class="row">
 								<div class="col s12">
 									<div class="section">
-										<p class="caption">This tab contains what you need to go to war!</p>
+										<span class="caption">This tab contains what you need to go to war!</span>
 										<h2 class="header">Muster</h2>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col s6">
-									<a id="musterSoldier" class="waves-effect waves-light btn-large">Soldier</a>
-									<a id="musterAutogunner" class="waves-effect waves-light btn-large">Autogunner</a>
-									<a id="musterCorporal" class="waves-effect waves-light btn-large">Corporal</a>
-									<a id="musterSergeant" class="waves-effect waves-light btn-large">Sergeant</a>
-									<a id="musterFireTeam" class="waves-effect waves-light btn-large">Fire Team</a>
-									<a id="musterRifleSquad" class="waves-effect waves-light btn-large">Rifle Squad</a>
+									<table>
+										<tr>
+											<th>Muster</th>
+											<th>Qty</th>
+										</tr>
+										<tr>
+											<td><a id="musterConscript" class="waves-effect waves-light btn">Conscript</a></td>
+											<td><span id="musterConscriptDisplay">0</span></td>
+										</tr>
+										<tr>
+											<td><a id="musterSoldier" class="waves-effect waves-light btn">Soldier</a></td>
+											<td><span id="musterSoldierDisplay">0</span></td>
+										</tr>
+										<tr>
+											<td><a id="musterFireTeam" class="waves-effect waves-light btn">Fire Team</a></td>
+											<td><span id="musterFireTeamDisplay">0</span></td>
+										</tr>
+										<tr>
+											<td><a id="musterRifleSquad" class="waves-effect waves-light btn">Rifle Squad</a></td>
+											<td><span id="musterRifleSquadDisplay">0</span></td>
+										</tr>
+									</table>
 								</div>
 								<div class="col s6">
-									
+									<a class="dropdown-button btn" href="#" data-belowOrigin="true" data-activates="warSelect">GO TO WAR!</a>
+									<ul id="warSelect" class="dropdown-content">
+										<li><a id="war-thorp" href="#!">Thorp</a></li>
+										<li><a id="war-hamlet" href="#!">Hamlet</a></li>
+										<li><a id="war-village" href="#!">Village</a></li>
+									</ul>
+									<table id="warTable">
+										<tr>
+											<th>Enemy</th>
+											<th>Qty</th>
+										</tr>
+										<tr id="soldierRow">
+											<td>Soldier</td>
+											<td id="enemySoldier">0</td>
+										</tr>
+										<tr id="fireTeamRow">
+											<td>Fire Team</td>
+											<td id="enemyFireTeam">0</td>
+										</tr>
+										<tr id="rifleSquadRow">
+											<td>Rifle Squad</td>
+											<td id="enemyRifleSquad">0</td>
+										</tr>
+									</table>
 								</div>
 							</div>
 						</div>
