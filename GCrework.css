@@ -1,7 +1,10 @@
 .sidePanel {
 	width:15%;
-	float:left;
+/*	float:left;
 	clear:both;
+*/
+	position:fixed;
+	left:0px;
 }
 
 #table1st {
