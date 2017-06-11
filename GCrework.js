@@ -63,18 +63,22 @@ GENERAL					GEN
 
 */
 
+$(document).ready(function(){
+	$('#warTable').hide();
+});
+
+const war = {
+	flag:false,
+	continuation: false,
+	attacking: ""
+}
+
 const resources = {
 	//GLOBAL
 	space: {
-		total: 10,
-		current: 10,
-		currentDisplay: $('#space-Total')
-	},
-	//PEOPLE
-	conscript: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('#conscript-Total')
+		currentDisplay: $('#space-Total')
 	},
 	//EQUPMENT
 	rifle: {
@@ -86,71 +90,179 @@ const resources = {
 		total: 0,
 		current: 0,
 		currentDisplay: $('#automaticRifle-Total')
-	},
-	//COMBATANTS
-	soldier: {
-		total: 0,
-		current: 0,
-		currentDisplay: $('#soldier-Total')
-	},
-	autogunner: {
-		total: 0,
-		current: 0,
-		currentDisplay: $('#autogunner-Total')
-	},
-	corporal: {
-		total: 0,
-		current: 0,
-		currentDisplay: $('#corporal-Total')
-	},
-	sergeant: {
-		total: 0,
-		current: 0,
-		currentDisplay: $('#sergeant-Total')
-	},
-	fireTeam: {
-		total: 0,
-		current: 0,
-		currentDisplay: $('#fireTeam-Total')
-	},
-	rifleSquad: {
-		total: 0,
-		current: 0,
-		currentDisplay: $('#rifleSquad-Total')
 	}
 }
-
-const muster = {
+	
+const combatant = {
+	//COMBATANTS
+	conscript: {
+		home:{
+			total: 0,
+			current: 0,
+			currentDisplay: $('#conscript-Total')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#musterConscriptDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#enemyConscript'),
+			row: $('#conscriptRow')
+		},
+		stat: {
+			pow: 1,
+			def: 1
+		}
+	},
 	soldier: {
-		total: 0,
-		current: 0,
-		currentDisplay: $('#soldier-Total')
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#soldier-Total')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#musterSoldierDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#enemySoldier'),
+			row: $('#soldierRow')
+		},
+		stat: {
+			pow: 5,
+			def: 5
+		}
 	},
 	autogunner: {
-		total: 0,
-		current: 0,
-		currentDisplay:
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#autogunner-Total')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#musterAutogunnerDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#enemyAutogunner'),
+			row: $('#autogunnerRow')
+		},
+		stat: {
+			pow: 20,
+			def: 5
+		}
 	},
 	corporal: {
-		total: 0,
-		current: 0,
-		currentDisplay: $('#corporal-Total')
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#corporal-Total')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#musterCorporalDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#enemyCorporal'),
+			row: $('#corporalRow')
+		},
+		stat: {
+			pow: 5,
+			def: 10
+		}
 	},
 	sergeant: {
-		total: 0,
-		current: 0,
-		currentDisplay: $('#sergeant-Total')
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#sergeant-Total')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#musterSergeantDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#enemySergeant'),
+			row: $('#sergeantRow')
+		},
+		stat: {
+			pow: 5,
+			def: 15
+		}
 	},
 	fireTeam: {
-		total: 0,
-		current: 0,
-		currentDisplay: $('#fireTeam-Total')
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#fireTeam-Total')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#musterFireTeamDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#enemyFireTeam'),
+			row: $('#fireTeamRow')
+		},
+		stat: {
+			pow: 50,
+			def: 50
+		}
 	},
 	rifleSquad: {
-		total: 0,
-		current: 0,
-		currentDisplay: $('#rifleSquad-Total')
-	},
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#rifleSquad-Total')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#musterRifleSquadDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#enemyRifleSquad'),
+			row: $('#rifleSquadRow')
+		},
+		stat: {
+			pow: 250,
+			def: 250
+		}
+	}
 }
 
 const primaries = {
@@ -194,7 +306,7 @@ const transducers = {
 		produces: [{type:"autogunner",qty:1}],
 		consumes: [{type:"conscript",qty:1},{type:"automaticRifle",qty:1}],
 		cost: [{type:"space",qty:1}]
-	}
+	},
 	drillsergeant: {
 		total: 0,
 		current: 0,
@@ -208,6 +320,34 @@ const transducers = {
 
 const eventListeners = {
 	//PERSONNEL
+	generateConscript: $('#generateConscript').click(function(){
+		combatant.conscript.home.total++;
+		combatant.conscript.home.current++;
+		
+		updateDisplay();
+	}),
+	generateSoldier: $('#generateSoldier').click(function(){
+		if(combatant.conscript.home.current >= 1 && resources.rifle.current >= 1){
+			combatant.conscript.home.current--;
+			resources.rifle.current--;
+			combatant.soldier.home.current++;
+			combatant.soldier.home.total++;
+			
+			updateDisplay();
+		}
+	}),
+	generateFireTeam: $('#generateFireTeam').click(function(){
+		if(combatant.corporal.home.current >= 1 && combatant.autogunner.home.current >= 1 && combatant.soldier.home.current >= 2){
+			combatant.corporal.home.current--;
+			combatant.autogunner.home.current--;
+			combatant.soldier.home.current-=2;
+			combatant.fireTeam.home.current++;
+			combatant.fireTeam.home.total++;
+			
+			updateDisplay();
+		}
+	}),
+	//BUILDINGS
 	buyRecruitOffice: $('#buyRecruitOffice').click(function(){
 		if(resources.space.current > 0){
 			primaries.recruitOffice.total++;
@@ -243,18 +383,75 @@ const eventListeners = {
 			
 			updateDisplay();
 		}
+	}),
+	//MUSTER
+	musterConscript: $('#musterConscript').click(function(){
+		if(combatant.conscript.home.current >= 1){
+			combatant.conscript.home.current--;
+			combatant.conscript.muster.current++;
+			combatant.conscript.muster.total++;
+			
+			updateDisplay();
+		}
+	}),
+	musterSoldier: $('#musterSoldier').click(function(){
+		if(combatant.soldier.home.current >= 1){
+			combatant.soldier.home.current--;
+			combatant.soldier.muster.current++;
+			combatant.soldier.muster.total++;
+			
+			updateDisplay();
+		}
+	}),
+	musterFireTeam: $('#musterFireTeam').click(function(){
+		if(combatant.fireTeam.home.current >= 1){
+			combatant.fireTeam.home.current--;
+			combatant.fireTeam.muster.current++;
+			combatant.fireTeam.muster.total++;
+			
+			updateDisplay();
+		}
+	}),
+	musterRifleSquad: $('#musterRifleSquad').click(function(){
+		if(combatant.rifleSquad.home.current >= 1){
+			combatant.rifleSquad.home.current--;
+			combatant.rifleSquad.muster.current++;
+			combatant.rifleSquad.muster.total++;
+			
+			updateDisplay();
+		}
+	}),
+	warThorp: $('#war-thorp').click(function(){
+		war.flag = true,
+		war.attacking = "thorp"
+	}),
+	warHamlet: $('#war-hamlet').click(function(){
+		war.flag = true,
+		war.attacking = "hamlet"
+	}),
+	warVillage: $('#war-village').click(function(){
+		war.flag = true,
+		war.attacking = "village"
 	})
 }
 
 const updateDisplay = function(){
 	
-	//could this take a prop of resources/primaries/etc?
-	
 	for(var prop in resources){
-		//prop.currentDisplay.innerHTML(prop.current);
 		let subObj = resources[prop];
 		subObj.currentDisplay.text(subObj.current);
-		subObj.gainDisplay.text(subObj.gain);
+	}
+	
+	for(var prop in combatant){
+		let subObj = combatant[prop];
+		subObj.home.currentDisplay.text(subObj.home.current);
+		subObj.muster.currentDisplay.text(subObj.muster.current);
+		subObj.enemy.currentDisplay.text(subObj.enemy.current);
+		if(subObj.enemy.current > 0){
+			subObj.enemy.row.show();
+		}else{
+			subObj.enemy.row.hide();
+		}
 	}
 	
 	for(var prop in primaries){
@@ -262,11 +459,40 @@ const updateDisplay = function(){
 		subObj.currentDisplay.text(subObj.current);
 	}
 	
+	if(war.flag === true){
+		$('#warTable').show();
+	}else{
+		$('#warTable').hide();
+	}
+	
 }
 
+const locations = {
+	thorp: {
+		soldier: calculateForce(10),
+		rewardLevel: 0
+	},
+	hamlet: {
+		soldier: calculateForce(20),
+		fireTeam: calculateForce(5),
+		rifleSquad: calculateForce(1),
+		rewardLevel: 4
+	},
+	village: {
+		soldier: calculateForce(50),
+		fireTeam: calculateForce(15),
+		rifleSquad: calculateForce(5),
+		rewardLevel: 10
+	}
+}
+
+function calculateForce(power){
+	return power + Math.ceil(Math.random() * power) + Math.ceil(Math.random() * power * resources.space.total);
+};
 
 var clock = setInterval(function(){
 	
+	//LOOP THOUGH PRIMARIES, INCREASE RESOURCES AS APPROPRIATE
 	for(var prop in primaries){
 		let priObj = primaries[prop];
 		priObj.tCount++;
@@ -275,25 +501,43 @@ var clock = setInterval(function(){
 			priObj.tCount = 0;
 			for(let i=0;i<priObj.current;i++){
 				let diceroll = Math.random();
-				if(diceroll > 0.95){
-					//work with priObj.produces[1]
+				if(diceroll > 0.95){	//could 0.95 be replaced with primary reference so differenet primaries can have different rare chances?
+					//produce rare item
 					for(var prop2 in resources){
 						let resObj1 = resources[prop2];
 						if(prop2 == priObj.produces[1].type){
 							resObj1.total += priObj.produces[1].qty;
 							resObj1.current += priObj.produces[1].qty;
-							console.log("Adding rare " + priObj.produces[1].qty + " to " + prop2);	//
+				//			console.log("Adding rare " + priObj.produces[1].qty + " to " + prop2 + " in res");	//
+							break;
+						}
+					}
+					for(var prop2 in combatant){
+						let resObj1 = combatant[prop2];
+						if(prop2 == priObj.produces[1].type){
+							resObj1.home.total += priObj.produces[1].qty;
+							resObj1.home.current += priObj.produces[1].qty;
+				//			console.log("Adding rare " + priObj.produces[1].qty + " to " + prop2 + " in comb");	//
 							break;
 						}
 					}
 				}else{
-					//work with priObj.produces[0]
+					//produce common item
 					for(var prop3 in resources){
 						let resObj2 = resources[prop3];
 						if(prop3 == priObj.produces[0].type){
 							resObj2.total += priObj.produces[0].qty;
 							resObj2.current += priObj.produces[0].qty;
-							console.log("Adding " + priObj.produces[0].qty + " to " + prop3);	//
+				//			console.log("Adding " + priObj.produces[0].qty + " to " + prop3 + " in res");	//
+							break;
+						}
+					}
+					for(var prop3 in combatant){
+						let resObj2 = combatant[prop3];
+						if(prop3 == priObj.produces[0].type){
+							resObj2.home.total += priObj.produces[0].qty;
+							resObj2.home.current += priObj.produces[0].qty;
+				//			console.log("Adding " + priObj.produces[0].qty + " to " + prop3 + " in comb");	//
 							break;
 						}
 					}
@@ -302,6 +546,7 @@ var clock = setInterval(function(){
 		}
 	}
 	
+	//LOOP THROUGH TRANSDUCERS, CHECK IF CAN PROCESS, THEN PROCESS IF CAN.
 	for(var stat in transducers){
 		let tranObj = transducers[stat];
 		tranObj.tCount++;
@@ -311,27 +556,43 @@ var clock = setInterval(function(){
 			//If time to generate, restart counter and check for resource availability
 			tranObj.tCount = 0;
 			for(let i=0;i<tranObj.current;i++){
-				var tranPass = [];
+				var tranNeeds = [];
 				for(let i=0;i<tranObj.consumes.length;i++){
 					for(var search in resources){
 						let searchObj = resources[search];
 						if(tranObj.consumes[i].type == search){
-							if(tranObj.consumes[i].qty > searchObj.current){
-								tranPass.push(false);
-							}else{
-								tranPass.push(true);
+							if(tranObj.consumes[i].qty <= searchObj.current){
+								tranNeeds.push(searchObj);
+								break;
+							}
+						}
+					}
+					for(var search in combatant){
+						let searchObj = combatant[search];
+						if(tranObj.consumes[i].type == search){
+							if(tranObj.consumes[i].qty <= searchObj.home.current){
+								tranNeeds.push(searchObj);
+								break;
 							}
 						}
 					}
 				}
-				if(!tranPass.includes(false)){
+				console.log("tranNeeds is " + tranNeeds);
+				if(tranObj.consumes.length == tranNeeds.length){
 					//got everything, loop and take
-					for(let i=0;i<tranObj.consumes.length;i++){
+					for(let i=0;i<tranObj.consumes.length;i++){						
 						for(var take in resources){
 							let takeObj = resources[take];
 							if(tranObj.consumes[i].type == take){
 								takeObj.current -= tranObj.consumes[i].qty;
-								console.log("Taking " + tranObj.consumes[i].qty + " from " + take);	//
+				//				console.log("Taking " + tranObj.consumes[i].qty + " from " + take + " in res");	//
+							}
+						}
+						for(var take in combatant){
+							let takeObj = combatant[take];
+							if(tranObj.consumes[i].type == take){
+								takeObj.home.current -= tranObj.consumes[i].qty;
+				//				console.log("Taking " + tranObj.consumes[i].qty + " from " + take + " in comb");	//
 							}
 						}
 					}
@@ -341,12 +602,138 @@ var clock = setInterval(function(){
 							let putObj = resources[put];
 							if(tranObj.produces[i].type == put){
 								putObj.current += tranObj.produces[i].qty;
-								console.log("Adding " + tranObj.produces[i].qty + " to " + put);	//
+				//				console.log("Adding " + tranObj.produces[i].qty + " to " + put + " in res");	//
+							}
+						}
+						for(var put in combatant){
+							let putObj = combatant[put];
+							if(tranObj.produces[i].type == put){
+								putObj.home.current += tranObj.produces[i].qty;
+				//				console.log("Adding " + tranObj.produces[i].qty + " to " + put + " in comb");	//
 							}
 						}
 					}
 				}
 			}	
+		}
+	}
+	
+	if(war.flag === true){
+		var myForce = 0;
+		for(var troops in combatant){
+			let troopObj = combatant[troops];
+			myForce += troopObj.muster.current;
+		}
+		if(myForce < 1){
+			//false start
+			war.flag = false;
+			war.attacking = "";
+		}else{
+			//real battle
+			if(war.continuation === false){
+				//new attack, generate enemies
+				war.continuation = true;
+				for(var loc in locations){
+					let locObj = locations[loc];
+					if(loc == war.attacking){
+						for(enemy in locObj){
+							let enemyMethod = locObj[enemy];
+							for(troop in combatant){
+								if(enemy == troop){
+									combatant[troop].enemy.current += enemyMethod;	//should be a function?
+								}
+							}
+						}
+					}
+				}
+				
+			}
+			var enemyForce = 0;
+			for(var troops in combatant){
+				let troopObj = combatant[troops];
+				enemyForce += troopObj.enemy.current;
+			}
+			//player hits game
+			for(var attacker in combatant){
+				let atkObj = combatant[attacker];
+				for(let i=0;i<atkObj.muster.current;i++){
+					let aim = Math.random()*enemyForce;
+					for(var defender in combatant){
+						let defObj = combatant[defender];
+						if(aim < (defObj.enemy.current / enemyForce)){
+							//hit!
+							if(atkObj.stat.pow < defObj.stat.def){
+								let wound = Math.random()*defObj.stat.def;
+								if(wound < atkObj.stat.pow){
+									defObj.enemy.temp--;
+								}
+							}else{
+								let smash = Math.ceil(atkObj.stat.pow / defObj.stat.def);
+								defObj.enemy.temp -= Math.round(smash / 2 + Math.random()*smash);
+							}
+						}
+					}
+				}
+			}
+			//game hits player
+			for(var resist in combatant){
+				let resiObj = combatant[resist];
+				for(let i=0;i<resiObj.enemy.current;i++){
+					let aim = Math.random()*myForce;
+					for(var valient in combatant){
+						let valObj = combatant[valient];
+						if(aim < valObj.muster.current / myForce){
+							//hit
+							if(resiObj.stat.pow < valObj.stat.def){
+								let wound = Math.random()*valObj.stat.def;
+								if(wound < resiObj.stat.pow){
+									valObj.muster.temp--;
+								}
+							}else{
+								let smash = Math.ceil(resiObj.stat.pow / valObj.stat.def);
+								valObj.muster.temp -= Math.round(smash / 2 + Math.random()*smash);
+							}
+						}
+					}
+				}
+			}
+			myForce = 0;
+			enemyForce = 0;
+			for(var casualties in combatant){
+				let trpObj = combatant[casualties];
+				trpObj.muster.current += trpObj.muster.temp;
+				if(trpObj.muster.current < 0){trpObj.muster.current = 0;}
+				myForce += trpObj.muster.current;
+				trpObj.enemy.current += trpObj.enemy.temp;
+				if(trpObj.enemy.current < 0){trpObj.enemy.current = 0;}
+				enemyForce += trpObj.enemy.current;
+			}
+			
+			
+			
+			if(myForce <= 0){
+				//you lose
+				console.log("You lose");
+				war.flag = false;
+				war.continuation = false;
+				war.attacking = "";
+				for(var reset in combatant){
+					let resetObj = combatant[reset];
+					resetObj.enemy.current = 0;
+				}
+			}
+			if(enemyForce <= 0){
+				//you win!
+				console.log("You Win");
+				//promote surviving units
+				//return muster to home
+				//gain rewards (space)...maybe should add drops as the enemy are killed per tick? - no, reward only if win!
+				//switch war off!
+				war.flag = false;
+				war.continuation = false;
+				war.attacking = "";
+			}
+			//otherwise, the war continues next tick...
 		}
 	}
 
