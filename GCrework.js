@@ -17,8 +17,23 @@ RIFLE COMPANY - 3 RIFLE PLATOONS, 1 WEAPONS COMPANY, COMPANY HQ (1 CPT, 1 LT, 1S
 
 WEAPONS COMPANY - COMPANY HQ (1 MAJ, 1 CPT, 1SGT, MSGT, CPL, 2 PT)
 	80MM MORTAR PLATOON
+		PLATOON HQ (PL CMDR, PL SGT, AMMO TECH, 2 MEN)
+		2 MORTAR SECTIONS
+			SECTION HQ (SEC LEADER, 2 MEN, 2 FORWARD OBSERVERS)
+			4 MORTAR SQUAD (SQUAD LEADER, GUNNER, ASS.GUNNER, 3 MEN)
 	ANTI-ARMOUR PLATOON
+		PLATOON HQ (PL CMDR, PL SGT, MAN)
+		ANTI-ARMOUR SECTION
+			SECTION LEADER
+			2 AA SQUADS
+				2 AA TEAMS (4 MEN, 2 MISSILE LAUNCHERS)
+		TOW SECTION
+			SECTION LEADER
+			4 TOW SQUAD (SAQAUD LEADER, 2 GUNNERS, 2 ASS.GUNNERS, 2 TOW LAUNCHERS)
 	HEAVY MG PLATOON
+		PLATOON HQ (PL CMDR, PL SGT, 2 MEN)
+		3 HMG SECTIONS
+			2 HMG SQUADS (SQUAD LEADER, GUNNER, ASS.GUNNER. MAN, 1 HMG)
 	
 HQ AND SERVICE COMPANY
 	BATTALION HQ (LT COL, MAJ, SMAJ, EXEC STAFF SECTIONS (S-1, S-2, S-3, S-4, S-6), CHAPLAIN SECTION)
@@ -70,8 +85,9 @@ $(document).ready(function(){
 const war = {
 	flag:false,
 	continuation: false,
-	attacking: ""
-}
+	attacking: "",
+	loot: []
+};
 
 const resources = {
 	//GLOBAL
@@ -91,7 +107,7 @@ const resources = {
 		current: 0,
 		currentDisplay: $('#automaticRifle-Total')
 	}
-}
+};
 	
 const combatant = {
 	//COMBATANTS
@@ -116,7 +132,9 @@ const combatant = {
 		},
 		stat: {
 			pow: 1,
-			def: 1
+			def: 1,
+			components: [],
+			drops: ""
 		}
 	},
 	soldier: {
@@ -140,31 +158,9 @@ const combatant = {
 		},
 		stat: {
 			pow: 5,
-			def: 5
-		}
-	},
-	autogunner: {
-		home: {
-			total: 0,
-			current: 0,
-			currentDisplay: $('#autogunner-Total')
-		},
-		muster: {
-			total: 0,
-			current: 0,
-			temp: 0,
-			currentDisplay: $('#musterAutogunnerDisplay')
-		},
-		enemy: {
-			total: 0,
-			current: 0,
-			temp: 0,
-			currentDisplay: $('#enemyAutogunner'),
-			row: $('#autogunnerRow')
-		},
-		stat: {
-			pow: 20,
-			def: 5
+			def: 5,
+			components: [],
+			drops: "rifle"
 		}
 	},
 	corporal: {
@@ -188,7 +184,9 @@ const combatant = {
 		},
 		stat: {
 			pow: 5,
-			def: 10
+			def: 10,
+			components: [],
+			drops: "rifle"
 		}
 	},
 	sergeant: {
@@ -212,7 +210,9 @@ const combatant = {
 		},
 		stat: {
 			pow: 5,
-			def: 15
+			def: 15,
+			components: [],
+			drops: "rifle"
 		}
 	},
 	fireTeam: {
@@ -236,7 +236,9 @@ const combatant = {
 		},
 		stat: {
 			pow: 50,
-			def: 50
+			def: 50,
+			components: ["corporal", "soldier", "soldier", "soldier"],
+			drops: "automaticRifle"
 		}
 	},
 	rifleSquad: {
@@ -260,10 +262,12 @@ const combatant = {
 		},
 		stat: {
 			pow: 250,
-			def: 250
+			def: 250,
+			components: ["sergeant", "fireTeam", "fireTeam", "fireTeam"],
+			drops: "automaticRifle"
 		}
 	}
-}
+};
 
 const primaries = {
 	//TROOPS
@@ -298,25 +302,16 @@ const transducers = {
 		consumes: [{type:"conscript",qty:1},{type:"rifle",qty:1}],
 		cost: [{type:"space",qty:1}]
 	},
-	autoBarracks: {
-		total: 0,
-		current: 0,
-		time: 1,
-		tCount: 0,
-		produces: [{type:"autogunner",qty:1}],
-		consumes: [{type:"conscript",qty:1},{type:"automaticRifle",qty:1}],
-		cost: [{type:"space",qty:1}]
-	},
 	drillsergeant: {
 		total: 0,
 		current: 0,
 		time:10,
 		tCount: 0,
 		produces: [{type:"fireTeam",qty:1}],
-		consumes: [{type:"corporal",qty:1},{type:"soldier",qty:2},{type:"autogunner",qty:1}],
+		consumes: [{type:"corporal",qty:1},{type:"soldier",qty:3},{type:"automaticRifle",qty:1}],
 		cost:[{type:"sergeant",qty:1}]
 	}
-}
+};
 
 const eventListeners = {
 	//PERSONNEL
@@ -339,8 +334,8 @@ const eventListeners = {
 	generateFireTeam: $('#generateFireTeam').click(function(){
 		if(combatant.corporal.home.current >= 1 && combatant.autogunner.home.current >= 1 && combatant.soldier.home.current >= 2){
 			combatant.corporal.home.current--;
-			combatant.autogunner.home.current--;
-			combatant.soldier.home.current-=2;
+			resources.automaticRifle.current--;
+			combatant.soldier.home.current-=3;
 			combatant.fireTeam.home.current++;
 			combatant.fireTeam.home.total++;
 			
@@ -394,6 +389,22 @@ const eventListeners = {
 			updateDisplay();
 		}
 	}),
+	musterConscriptHalf: $('#musterConscriptHalf').click(function(){
+		let half = Math.floor(combatant.conscript.home.current / 2);
+			combatant.conscript.home.current -= half;
+			combatant.conscript.muster.current += half;
+			combatant.conscript.muster.total += half;
+			
+			updateDisplay();
+	}),
+	musterConscriptFull: $('#musterConscriptFull').click(function(){
+		let full = Math.floor(combatant.conscript.home.current);
+			combatant.conscript.home.current -= full;
+			combatant.conscript.muster.current += full;
+			combatant.conscript.muster.total += full;
+			
+			updateDisplay();
+	}),
 	musterSoldier: $('#musterSoldier').click(function(){
 		if(combatant.soldier.home.current >= 1){
 			combatant.soldier.home.current--;
@@ -422,18 +433,18 @@ const eventListeners = {
 		}
 	}),
 	warThorp: $('#war-thorp').click(function(){
-		war.flag = true,
-		war.attacking = "thorp"
+		war.flag = true;
+		war.attacking = "thorp";
 	}),
 	warHamlet: $('#war-hamlet').click(function(){
-		war.flag = true,
-		war.attacking = "hamlet"
+		war.flag = true;
+		war.attacking = "hamlet";
 	}),
 	warVillage: $('#war-village').click(function(){
-		war.flag = true,
-		war.attacking = "village"
+		war.flag = true;
+		war.attacking = "village";
 	})
-}
+};
 
 const updateDisplay = function(){
 	
@@ -465,11 +476,11 @@ const updateDisplay = function(){
 		$('#warTable').hide();
 	}
 	
-}
+};
 
 const locations = {
 	thorp: {
-		soldier: calculateForce(10),
+		soldier: calculateForce(5),
 		rewardLevel: 0
 	},
 	hamlet: {
@@ -484,11 +495,87 @@ const locations = {
 		rifleSquad: calculateForce(5),
 		rewardLevel: 10
 	}
-}
+};
 
 function calculateForce(power){
 	return power + Math.ceil(Math.random() * power) + Math.ceil(Math.random() * power * resources.space.total);
-};
+}
+
+function processKill(killedObj, side, wounds){	//should only be passed a subObject within combatant
+	
+	if(!killedObj.stat.components.length > 0){
+		//object is individual
+		if(side == "enemy"){
+			killedObj.enemy.temp -= wounds;
+			for(let i=0;i<wounds;i++){
+				let dropChance = Math.random();
+				if(dropChance < 0.25){
+					console.log("Gen loot " + killedObj.stat.drops);
+					war.loot.push(killedObj.stat.drops);
+				}
+			}
+		}else{
+			killedObj.muster.temp -= wounds;
+		}
+	}else{	
+		//object is a units
+		//process top object death!
+		if(side == "enemy"){
+			killedObj.enemy.temp -= 1;
+			let dropChance = Math.random();
+			if(dropChance < 0.25){
+				console.log("Gen loot " + killedObj.stat.drops);
+				war.loot.push(killedObj.stat.drops);
+			}
+		}else{
+			killedObj.muster.temp -= wounds;
+		}
+		//propergate wounds through components
+		let hitArray = [];
+		for(let i=0;i<killedObj.stat.components.length;i++){
+			hitArray.push(0);
+		}
+		//hitArray should now be [0,0,0.....0]
+		for(let i=0;i<wounds;i++){
+			let hit = Math.floor(Math.random()*killedObj.stat.components.length);
+			hitArray[hit] += 1;
+		}
+		//this should assign wounds randomly across hitArray
+		//should be able to map to components array
+		//hitArray = [0,0,1,0]
+		//..components = ["sarge", "fireteam", "fireteam", "fireteam"]
+		//this shows a fireteam is hit, 2 others and sarge are fine!
+		for(let i=0;i<hitArray.length;i++){
+			if(hitArray[i] == 0){
+				//component not hit! Add one to enemy/muster!
+				let searchComponent = killedObj.stat.components[i];
+				for(var looking in combatant){
+					let lookObj = combatant[looking];
+					if(looking == searchComponent){
+						if(side == "enemy"){
+							lookObj.enemy.current++;
+						}else{
+							lookObj.muster.current++;
+						}
+					}
+				}
+			}else{
+				//component hit, process kill via this function
+				let searchComponent = killedObj.stat.components[i];
+				for(var looking in combatant){
+					let lookObj = combatant[looking];
+					if(looking == searchComponent){
+						if(side == "enemy"){
+							processKill(lookObj, "enemy", hitArray[i]);
+						}else{
+							processKill(lookObj, "mine", hitArray[i]);
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 var clock = setInterval(function(){
 	
@@ -657,7 +744,7 @@ var clock = setInterval(function(){
 			for(var attacker in combatant){
 				let atkObj = combatant[attacker];
 				for(let i=0;i<atkObj.muster.current;i++){
-					let aim = Math.random()*enemyForce;
+					let aim = Math.random();
 					for(var defender in combatant){
 						let defObj = combatant[defender];
 						if(aim < (defObj.enemy.current / enemyForce)){
@@ -665,11 +752,14 @@ var clock = setInterval(function(){
 							if(atkObj.stat.pow < defObj.stat.def){
 								let wound = Math.random()*defObj.stat.def;
 								if(wound < atkObj.stat.pow){
-									defObj.enemy.temp--;
+									console.log("my " + attacker + " " + i + " kills a " + defender);	//
+									processKill(defObj,"enemy",1);
 								}
 							}else{
 								let smash = Math.ceil(atkObj.stat.pow / defObj.stat.def);
-								defObj.enemy.temp -= Math.round(smash / 2 + Math.random()*smash);
+								let smashResult = Math.round((smash / 2) + Math.random()*smash);
+								console.log("my " + attacker + " " + i + " smashes " + smashResult + " " + defender);	//
+								processKill(defObj, "enemy", smashResult);
 							}
 						}
 					}
@@ -679,7 +769,7 @@ var clock = setInterval(function(){
 			for(var resist in combatant){
 				let resiObj = combatant[resist];
 				for(let i=0;i<resiObj.enemy.current;i++){
-					let aim = Math.random()*myForce;
+					let aim = Math.random();
 					for(var valient in combatant){
 						let valObj = combatant[valient];
 						if(aim < valObj.muster.current / myForce){
@@ -687,11 +777,14 @@ var clock = setInterval(function(){
 							if(resiObj.stat.pow < valObj.stat.def){
 								let wound = Math.random()*valObj.stat.def;
 								if(wound < resiObj.stat.pow){
-									valObj.muster.temp--;
+									console.log("enemy " + resist + " " + i + " kills a " + valient);	//
+									processKill(valObj, "mine", 1);
 								}
 							}else{
 								let smash = Math.ceil(resiObj.stat.pow / valObj.stat.def);
-								valObj.muster.temp -= Math.round(smash / 2 + Math.random()*smash);
+								let smashResult = Math.round((smash / 2) + Math.random()*smash);
+								console.log("enemy " + resist + " " + i + " smashes " + smashResult + " " + valient);	//
+								processKill(valObj, "mine", smashResult);
 							}
 						}
 					}
@@ -709,26 +802,33 @@ var clock = setInterval(function(){
 				enemyForce += trpObj.enemy.current;
 			}
 			
-			
-			
 			if(myForce <= 0){
 				//you lose
 				console.log("You lose");
 				war.flag = false;
 				war.continuation = false;
 				war.attacking = "";
+				war.loot = [];
 				for(var reset in combatant){
 					let resetObj = combatant[reset];
 					resetObj.enemy.current = 0;
 				}
-			}
-			if(enemyForce <= 0){
+			}else if(enemyForce <= 0){
 				//you win!
 				console.log("You Win");
 				//promote surviving units
 				//return muster to home
-				//gain rewards (space)...maybe should add drops as the enemy are killed per tick? - no, reward only if win!
-				//switch war off!
+				for(let i=0;i<war.loot.length;i++){
+					for(var booty in resources){
+						let bootyObj = resources[booty];
+						if(war.loot[i] == booty){
+							console.log("looted a " + booty);
+							bootyObj.current++;
+							bootyObj.total++;
+						}
+					}
+				}
+				war.loot = [];
 				war.flag = false;
 				war.continuation = false;
 				war.attacking = "";
