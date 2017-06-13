@@ -37,11 +37,20 @@ WEAPONS COMPANY - COMPANY HQ (1 MAJ, 1 CPT, 1SGT, MSGT, CPL, 2 PT)
 	
 HQ AND SERVICE COMPANY
 	BATTALION HQ (LT COL, MAJ, SMAJ, EXEC STAFF SECTIONS (S-1, S-2, S-3, S-4, S-6), CHAPLAIN SECTION)
-	COMPANY HQ (1 LT, 1 SSGT, 1SGT, 1PT)
+	COMPANY HQ (1 CPT, 1 LT, 1 SSGT, 1SGT, 1PT)
 	SCOUT SNIPER PLATOON
+		PLATOON HQ (1 LT, 1 SGT, 1 PT)
+		8-10 SNIPER TEAMS (1 SNIPER/CPL, 1 SPOTTER/PT)
 	COMMS PLATOON
+		PLATOON HQ (1 LT, 1SSGT)
+		DATA SECTION - ?
+		WIRE SECTION - ?
+		RADIO SECTION - ?
+		MAINTENANCE SECTION - ?
 	SERVICE PLATOON
+		SUPPLY, ARMOUR, MOTOR TRANSPORT, TOW MAINTENANCE, DINING FACILITIES LEAD BY BATT. SUPPLY OFFICER
 	MEDICAL PLATOON
+		2 MEDICAL SECTION (1 SURGEON/LT, 3 CORPSMEN) OTHER (1 PHYSICIAN/SSGT, 3 CORPSMEN).
 	
 INFANTRY BATTALION - HQ AND SERVICE COMPANY, 3 RIFLE COMPANY, 1 WEAPON COMPANY
 
@@ -481,19 +490,19 @@ const updateDisplay = function(){
 const locations = {
 	thorp: {
 		soldier: calculateForce(5),
-		rewardLevel: 0
+		rewardLevel: 1
 	},
 	hamlet: {
 		soldier: calculateForce(20),
 		fireTeam: calculateForce(5),
 		rifleSquad: calculateForce(1),
-		rewardLevel: 4
+		rewardLevel: 2
 	},
 	village: {
 		soldier: calculateForce(50),
 		fireTeam: calculateForce(15),
 		rifleSquad: calculateForce(5),
-		rewardLevel: 10
+		rewardLevel: 4
 	}
 };
 
@@ -805,10 +814,13 @@ var clock = setInterval(function(){
 			if(myForce <= 0){
 				//you lose
 				console.log("You lose");
+				//turn war off
 				war.flag = false;
 				war.continuation = false;
 				war.attacking = "";
+				//bin all generated drops
 				war.loot = [];
+				//remove all generated enemy troops
 				for(var reset in combatant){
 					let resetObj = combatant[reset];
 					resetObj.enemy.current = 0;
@@ -817,7 +829,49 @@ var clock = setInterval(function(){
 				//you win!
 				console.log("You Win");
 				//promote surviving units
+				let placeOfWar = {};
+				for(var place in locations){
+					if(place == war.attacking){
+						placeOfWar = locations[place];
+					}
+				}
+				for(var promotion in combatant){
+					let proObj = combatant[promotion];
+					let promoArray = ["soldier", "corporal", "sergeant"];
+					for(let i=0;i<proObj.muster.current;i++){	//allow promotion for each enenty in muster
+						let promoAmount = 0;
+						let isPromotable = false;	//only individuals can be promoted, not units
+						for(j=0;j<promoArray.length;j++){
+							if(promoArray[j] == promotion){
+								isPromotable = true;
+							}
+						}										//THIS NEEDS SWITCHING AROUND, CHECK IF CAN BE PROMOTED BEFORE LOOPING THROUGH ALL CURRENT MUSTER!!
+						if(isPromotable == true){
+							for(let k=0;k<placeOfWar.rewardLevel;k++){	//higher areas allow multiple promotion chances
+								let promoChance = Math.random();
+								if(promoChance < 0.1){
+									//promotion!
+									promoAmount++;
+								}
+							}
+							if(promoAmount > 0){
+								
+							}
+							
+						}
+						//////////////////////////////////////////////////
+						
+						if(promoAmount > 0){
+							proObj.muster.current--;
+							for(let k=0;k<promoArray.length;k++){
+								
+							}
+						}
+						///////////////////////////////////////////////////////
+					}
+				}
 				//return muster to home
+				//give drops to player
 				for(let i=0;i<war.loot.length;i++){
 					for(var booty in resources){
 						let bootyObj = resources[booty];
@@ -828,6 +882,7 @@ var clock = setInterval(function(){
 						}
 					}
 				}
+				//turn war off
 				war.loot = [];
 				war.flag = false;
 				war.continuation = false;
