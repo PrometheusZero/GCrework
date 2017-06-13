@@ -89,6 +89,10 @@ GENERAL					GEN
 
 $(document).ready(function(){
 	$('#warTable').hide();
+	for(var test in combatant){
+		let testObj = combatant[test];
+		testObj.home.current += 100;
+	}
 });
 
 const war = {
@@ -141,7 +145,7 @@ const combatant = {
 		},
 		stat: {
 			pow: 1,
-			def: 1,
+			def: 2,
 			components: [],
 			drops: ""
 		}
@@ -166,8 +170,8 @@ const combatant = {
 			row: $('#soldierRow')
 		},
 		stat: {
-			pow: 5,
-			def: 5,
+			pow: 2,
+			def: 7,
 			components: [],
 			drops: "rifle"
 		}
@@ -192,8 +196,8 @@ const combatant = {
 			row: $('#corporalRow')
 		},
 		stat: {
-			pow: 5,
-			def: 10,
+			pow: 3,
+			def: 15,
 			components: [],
 			drops: "rifle"
 		}
@@ -218,8 +222,8 @@ const combatant = {
 			row: $('#sergeantRow')
 		},
 		stat: {
-			pow: 5,
-			def: 15,
+			pow: 4,
+			def: 30,
 			components: [],
 			drops: "rifle"
 		}
@@ -244,7 +248,7 @@ const combatant = {
 			row: $('#fireTeamRow')
 		},
 		stat: {
-			pow: 50,
+			pow: 18,
 			def: 50,
 			components: ["corporal", "soldier", "soldier", "soldier"],
 			drops: "automaticRifle"
@@ -270,8 +274,8 @@ const combatant = {
 			row: $('#rifleSquadRow')
 		},
 		stat: {
-			pow: 250,
-			def: 250,
+			pow: 75,
+			def: 100,
 			components: ["sergeant", "fireTeam", "fireTeam", "fireTeam"],
 			drops: "automaticRifle"
 		}
@@ -341,7 +345,7 @@ const eventListeners = {
 		}
 	}),
 	generateFireTeam: $('#generateFireTeam').click(function(){
-		if(combatant.corporal.home.current >= 1 && combatant.autogunner.home.current >= 1 && combatant.soldier.home.current >= 2){
+		if(combatant.corporal.home.current >= 1 && resources.automaticRifle.current >= 1 && combatant.soldier.home.current >= 2){
 			combatant.corporal.home.current--;
 			resources.automaticRifle.current--;
 			combatant.soldier.home.current-=3;
@@ -495,7 +499,6 @@ const locations = {
 	hamlet: {
 		soldier: calculateForce(20),
 		fireTeam: calculateForce(5),
-		rifleSquad: calculateForce(1),
 		rewardLevel: 2
 	},
 	village: {
@@ -512,18 +515,26 @@ function calculateForce(power){
 
 function processKill(killedObj, side, wounds){	//should only be passed a subObject within combatant
 	
+	console.log("processKill called. Args are: obj" + killedObj.stat.pow + "/" + killedObj.stat.def + " side:" + side + " wounds:" + wounds);	//
+	
 	if(!killedObj.stat.components.length > 0){
 		//object is individual
 		if(side == "enemy"){
+			if(wounds > killedObj.enemy.current){
+				wounds = killedObj.enemy.current;
+			}
 			killedObj.enemy.temp -= wounds;
 			for(let i=0;i<wounds;i++){
 				let dropChance = Math.random();
 				if(dropChance < 0.25){
-					console.log("Gen loot " + killedObj.stat.drops);
+					console.log("Gen loot " + killedObj.stat.drops);	//
 					war.loot.push(killedObj.stat.drops);
 				}
 			}
 		}else{
+			if(wounds > killedObj.muster.current){
+				wounds = killedObj.muster.current;
+			}
 			killedObj.muster.temp -= wounds;
 		}
 	}else{	
@@ -533,7 +544,7 @@ function processKill(killedObj, side, wounds){	//should only be passed a subObje
 			killedObj.enemy.temp -= 1;
 			let dropChance = Math.random();
 			if(dropChance < 0.25){
-				console.log("Gen loot " + killedObj.stat.drops);
+				console.log("Gen loot " + killedObj.stat.drops);	//
 				war.loot.push(killedObj.stat.drops);
 			}
 		}else{
@@ -545,6 +556,7 @@ function processKill(killedObj, side, wounds){	//should only be passed a subObje
 			hitArray.push(0);
 		}
 		//hitArray should now be [0,0,0.....0]
+		console.log("checking blank hitArray: " + hitArray);	//
 		for(let i=0;i<wounds;i++){
 			let hit = Math.floor(Math.random()*killedObj.stat.components.length);
 			hitArray[hit] += 1;
@@ -554,10 +566,12 @@ function processKill(killedObj, side, wounds){	//should only be passed a subObje
 		//hitArray = [0,0,1,0]
 		//..components = ["sarge", "fireteam", "fireteam", "fireteam"]
 		//this shows a fireteam is hit, 2 others and sarge are fine!
+		console.log("checking filled hitArray: " + hitArray);	//
 		for(let i=0;i<hitArray.length;i++){
 			if(hitArray[i] == 0){
 				//component not hit! Add one to enemy/muster!
 				let searchComponent = killedObj.stat.components[i];
+				console.log("hitArray index " + i + " not hit referring to " + killedObj.stat.components[i]);	//
 				for(var looking in combatant){
 					let lookObj = combatant[looking];
 					if(looking == searchComponent){
@@ -574,6 +588,7 @@ function processKill(killedObj, side, wounds){	//should only be passed a subObje
 				for(var looking in combatant){
 					let lookObj = combatant[looking];
 					if(looking == searchComponent){
+						console.log("recalling processKill on " + looking + " " + hitArray[i] + " times");	//
 						if(side == "enemy"){
 							processKill(lookObj, "enemy", hitArray[i]);
 						}else{
@@ -826,8 +841,10 @@ var clock = setInterval(function(){
 					resetObj.enemy.current = 0;
 				}
 			}else if(enemyForce <= 0){
+				
 				//you win!
 				console.log("You Win");
+				
 				//promote surviving units
 				let placeOfWar = {};
 				for(var place in locations){
@@ -835,42 +852,54 @@ var clock = setInterval(function(){
 						placeOfWar = locations[place];
 					}
 				}
+				for(let a=0;a<placeOfWar.rewardLevel;a++){	//cheekily add space rewards here!
+					let spaceReward = Math.random();
+					console.log("space chance: " + spaceReward);
+					if(spaceReward < 0.1){
+						war.loot.push("space");
+						console.log("added to loot");
+					}
+				}
 				for(var promotion in combatant){
 					let proObj = combatant[promotion];
 					let promoArray = ["soldier", "corporal", "sergeant"];
-					for(let i=0;i<proObj.muster.current;i++){	//allow promotion for each enenty in muster
-						let promoAmount = 0;
-						let isPromotable = false;	//only individuals can be promoted, not units
-						for(j=0;j<promoArray.length;j++){
-							if(promoArray[j] == promotion){
-								isPromotable = true;
-							}
-						}										//THIS NEEDS SWITCHING AROUND, CHECK IF CAN BE PROMOTED BEFORE LOOPING THROUGH ALL CURRENT MUSTER!!
-						if(isPromotable == true){
-							for(let k=0;k<placeOfWar.rewardLevel;k++){	//higher areas allow multiple promotion chances
+					if(proObj.stat.components.length == 0 && promotion != "conscript"){ //can only be promoted if individual, not unit || OR A CONSCRIPT!!
+						for(let i=0;i<proObj.muster.current;i++){	//each mustered have chance of promotion
+							console.log(promotion + i + " of " + proObj.muster.current + " up for promotion");
+							let canBePromo = false;
+							for(let j=0;j<placeOfWar.rewardLevel;j++){	//chance of promo per reward level
 								let promoChance = Math.random();
-								if(promoChance < 0.1){
-									//promotion!
-									promoAmount++;
+								if(promoChance < 0.1){	//10% change of promo, could be variable based on rank....
+									canBePromo = true;
 								}
 							}
-							if(promoAmount > 0){
-								
+							if(canBePromo == true){	//if any promotions to be given
+								console.log(promotion + i + " of " + proObj.muster.current + " has been promoted");
+								proObj.muster.current--;
+								i--;				//since muster.current is now one less, kick i back one to compensate
+								for(let k=0;k<promoArray.length;k++){
+									if(promotion == promoArray[k]){
+										for(var newRank in combatant){
+											let newObj = combatant[newRank];
+											if(newRank == promoArray[k+1]){
+												newObj.home.current++;	//dont send back to muster, or may get ranked again!
+											}
+										}
+									}
+								}
 							}
-							
 						}
-						//////////////////////////////////////////////////
-						
-						if(promoAmount > 0){
-							proObj.muster.current--;
-							for(let k=0;k<promoArray.length;k++){
-								
-							}
-						}
-						///////////////////////////////////////////////////////
 					}
 				}
+				
 				//return muster to home
+				for(var returning in combatant){
+					let retObj = combatant[returning];
+					let sendAmount = retObj.muster.current;
+					retObj.muster.current -= sendAmount;
+					retObj.home.current += sendAmount;
+				}
+				
 				//give drops to player
 				for(let i=0;i<war.loot.length;i++){
 					for(var booty in resources){
