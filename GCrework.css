@@ -1,3 +1,7 @@
+.tooltip_templates {
+	display: none;
+}
+
 .sidePanel {
 	width:15%;
 /*	float:left;
@@ -5,6 +9,13 @@
 */
 	position:fixed;
 	left:0px;
+}
+
+.logPanel {
+	width:15%;
+	position:fixed;
+	right:0px;
+	top:64px;
 }
 
 #table1st {
@@ -36,4 +47,10 @@
 .header {
 	color: #ee6e73;
 	font-weight: 300;
+}
+
+.btn-small {
+	height: 24px;
+	line-height: 24px;
+	padding: 0 1rem;
 }

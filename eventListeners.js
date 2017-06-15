@@ -14,6 +14,13 @@ const eventListeners = {
 			combatant.soldier.home.total++;
 			
 			updateDisplay();
+		}else{
+			if(combatant.conscript.home.current < 1){
+				gameLog("Need a Conscript", "warning");
+			}
+			if(resources.rifle.current < 1){
+				gameLog("Need a rifle", "warning");
+			}
 		}
 	}),
 	generateFireTeam: $('#generateFireTeam').click(function(){
@@ -25,6 +32,16 @@ const eventListeners = {
 			combatant.fireTeam.home.total++;
 			
 			updateDisplay();
+		}else{
+			if(combatant.corporal.home.current < 1){
+				gameLog("Need a Corporal", "warning");
+			}
+			if(resources.automaticRifle.current < 1){
+				gameLog("Need an Automatic Rifle", "warning");
+			}
+			if(combatant.soldier.home.current < 2){
+				gameLog("Need at least 2 Soldiers", "warning");
+			}
 		}
 	}),
 	//BUILDINGS
@@ -35,6 +52,8 @@ const eventListeners = {
 			resources.space.current--;
 			
 			updateDisplay();
+		}else{
+			gameLog("Not enough space", "warning");
 		}
 	}),
 	buyRifleFactory: $('#buyRifleFactory').click(function(){
@@ -44,6 +63,8 @@ const eventListeners = {
 			resources.space.current--;
 
 			updateDisplay();
+		}else{
+			gameLog("Not enough space", "warning");
 		}
 	}),
 	buyBarracks: $('#buyBarracks').click(function(){
@@ -53,15 +74,19 @@ const eventListeners = {
 			resources.space.current--;
 			
 			updateDisplay();
+		}else{
+			gameLog("Not enough space", "warning");
 		}
 	}),
 	buyDrillSergeant: $('#buyDrillSergeant').click(function(){
-		if(resources.sergeant.current > 0){
+		if(resources.space.current > 0){
 			transducers.drillsergeant.current++;
 			transducers.drillsergeant.total++;
-			resources.sergeant.current--;
+			resources.space.current--;
 			
 			updateDisplay();
+		}else{
+			gameLog("Not enough space", "warning");
 		}
 	}),
 	//MUSTER
@@ -99,6 +124,72 @@ const eventListeners = {
 			updateDisplay();
 		}
 	}),
+	musterSoldierHalf: $('#musterSoldierHalf').click(function(){
+		let half = Math.floor(combatant.soldier.home.current / 2);
+			combatant.soldier.home.current -= half;
+			combatant.soldier.muster.current += half;
+			combatant.soldier.muster.total += half;
+			
+			updateDisplay();
+	}),
+	musterSoldierFull: $('#musterSoldierFull').click(function(){
+		let full = Math.floor(combatant.soldier.home.current);
+			combatant.soldier.home.current -= full;
+			combatant.soldier.muster.current += full;
+			combatant.soldier.muster.total += full;
+			
+			updateDisplay();
+	}),
+	musterCorporal: $('#musterCorporal').click(function(){
+		if(combatant.corporal.home.current >= 1){
+			combatant.corporal.home.current--;
+			combatant.corporal.muster.current++;
+			combatant.corporal.muster.total++;
+			
+			updateDisplay();
+		}
+	}),
+	musterCorporalHalf: $('#musterCorporalHalf').click(function(){
+		let half = Math.floor(combatant.corporal.home.current / 2);
+			combatant.corporal.home.current -= half;
+			combatant.corporal.muster.current += half;
+			combatant.corporal.muster.total += half;
+			
+			updateDisplay();
+	}),
+	musterCorporalFull: $('#musterCorporalFull').click(function(){
+		let full = Math.floor(combatant.corporal.home.current);
+			combatant.corporal.home.current -= full;
+			combatant.corporal.muster.current += full;
+			combatant.corporal.muster.total += full;
+			
+			updateDisplay();
+	}),
+	musterSergeant: $('#musterSergeant').click(function(){
+		if(combatant.sergeant.home.current >= 1){
+			combatant.sergeant.home.current--;
+			combatant.sergeant.muster.current++;
+			combatant.sergeant.muster.total++;
+			
+			updateDisplay();
+		}
+	}),
+	musterSergeantHalf: $('#musterSergeantHalf').click(function(){
+		let half = Math.floor(combatant.sergeant.home.current / 2);
+			combatant.sergeant.home.current -= half;
+			combatant.sergeant.muster.current += half;
+			combatant.sergeant.muster.total += half;
+			
+			updateDisplay();
+	}),
+	musterSergeantFull: $('#musterSergeantFull').click(function(){
+		let full = Math.floor(combatant.sergeant.home.current);
+			combatant.sergeant.home.current -= full;
+			combatant.sergeant.muster.current += full;
+			combatant.sergeant.muster.total += full;
+			
+			updateDisplay();
+	}),
 	musterFireTeam: $('#musterFireTeam').click(function(){
 		if(combatant.fireTeam.home.current >= 1){
 			combatant.fireTeam.home.current--;
@@ -107,6 +198,22 @@ const eventListeners = {
 			
 			updateDisplay();
 		}
+	}),
+	musterFireTeamHalf: $('#musterFireTeamHalf').click(function(){
+		let half = Math.floor(combatant.fireTeam.home.current / 2);
+			combatant.fireTeam.home.current -= half;
+			combatant.fireTeam.muster.current += half;
+			combatant.fireTeam.muster.total += half;
+			
+			updateDisplay();
+	}),
+	musterFireTeamFull: $('#musterFireTeamFull').click(function(){
+		let full = Math.floor(combatant.fireTeam.home.current);
+			combatant.fireTeam.home.current -= full;
+			combatant.fireTeam.muster.current += full;
+			combatant.fireTeam.muster.total += full;
+			
+			updateDisplay();
 	}),
 	musterRifleSquad: $('#musterRifleSquad').click(function(){
 		if(combatant.rifleSquad.home.current >= 1){
@@ -117,16 +224,35 @@ const eventListeners = {
 			updateDisplay();
 		}
 	}),
+	musterRifleSquadHalf: $('#musterRifleSquadHalf').click(function(){
+		let half = Math.floor(combatant.rifleSquad.home.current / 2);
+			combatant.rifleSquad.home.current -= half;
+			combatant.rifleSquad.muster.current += half;
+			combatant.rifleSquad.muster.total += half;
+			
+			updateDisplay();
+	}),
+	musterRifleSquadFull: $('#musterRifleSquadFull').click(function(){
+		let full = Math.floor(combatant.rifleSquad.home.current);
+			combatant.rifleSquad.home.current -= full;
+			combatant.rifleSquad.muster.current += full;
+			combatant.rifleSquad.muster.total += full;
+			
+			updateDisplay();
+	}),
 	warThorp: $('#war-thorp').click(function(){
 		war.flag = true;
 		war.attacking = "thorp";
+		gameLog("WAR STARTED", "warning");
 	}),
 	warHamlet: $('#war-hamlet').click(function(){
 		war.flag = true;
 		war.attacking = "hamlet";
+		gameLog("WAR STARTED", "warning");
 	}),
 	warVillage: $('#war-village').click(function(){
 		war.flag = true;
 		war.attacking = "village";
+		gameLog("WAR STARTED", "warning");
 	})
 };

@@ -93,6 +93,11 @@ $(document).ready(function(){
 		let testObj = combatant[test];
 		testObj.home.current += 100;
 	}
+	$('.tooltip').tooltipster({
+		contentAsHTML: true
+	});
+	
+	gameLog("Welcome to Conquest! Recruit conscripts and send them to war!", "normal");
 });
 
 const war = {
@@ -241,6 +246,33 @@ function processKill(killedObj, side, wounds){	//should only be passed a subObje
 				}
 			}
 		}
+	}
+}
+
+function gameLog(message, type){
+	let classColour = "";
+	let time = "0.00"
+	let d = new Date();
+	
+	if(type == "warning"){
+		classColour = "red-text text-darken-4";
+	}else if(type == "reward"){
+		classColour = "green-text text-darken-3";
+	}else{
+		classColour = "grey-text text-darken-1";
+	}
+	
+	if(d.getMinutes() < 10){
+		time = d.getHours() + ".0" + d.getMinutes();
+	}else{
+		time = d.getHours() + "." + d.getMinutes();
+	}
+	
+	$('#logTable').prepend('<tr class="' + classColour + '"><td>' + time + '</td><td>' + message + '</td></tr>');
+	
+	let element = $('logTable');
+	if(element.children.length > 20){
+		$('#logTable:last-child').remove();
 	}
 }
 
@@ -427,26 +459,12 @@ var clock = setInterval(function(){
 								if(wound < atkObj.stat.pow){
 									console.log("my " + attacker + " " + i + " kills a " + defender);	//
 									processKill(defObj,"enemy",1);
-									enemyForce = 0;
-									for(var troops in combatant){
-										let troopObj = combatant[troops];
-										enemyForce += troopObj.enemy.current;
-										console.log("Enemy has " + troopObj.enemy.current + " " + troops);
-									}
-									console.log("enemyForce is " + enemyForce);
 								}
 							}else{
 								let smash = Math.ceil(atkObj.stat.pow / defObj.stat.def);
 								let smashResult = Math.round((smash / 2) + Math.random()*smash);
 								console.log("my " + attacker + " " + i + " smashes " + smashResult + " " + defender);	//
 								processKill(defObj, "enemy", smashResult);
-								enemyForce = 0;
-								for(var troops in combatant){
-									let troopObj = combatant[troops];
-									enemyForce += troopObj.enemy.current;
-									console.log("Enemy has " + troopObj.enemy.current + " " + troops);
-								}
-								console.log("enemyForce is " + enemyForce);
 							}
 						}
 					}
@@ -468,26 +486,12 @@ var clock = setInterval(function(){
 								if(wound < resiObj.stat.pow){
 									console.log("enemy " + resist + " " + i + " kills a " + valient);	//
 									processKill(valObj, "mine", 1);
-									myForce = 0;
-									for(var troops in combatant){
-										let troopObj = combatant[troops];
-										myForce += troopObj.muster.current;
-										console.log("I have " + troopObj.muster.current + " " + troops);
-									}
-									console.log("myForce is " + myForce);
 								}
 							}else{
 								let smash = Math.ceil(resiObj.stat.pow / valObj.stat.def);
 								let smashResult = Math.round((smash / 2) + Math.random()*smash);
 								console.log("enemy " + resist + " " + i + " smashes " + smashResult + " " + valient);	//
 								processKill(valObj, "mine", smashResult);
-								myForce = 0;
-								for(var troops in combatant){
-									let troopObj = combatant[troops];
-									myForce += troopObj.muster.current;
-									console.log("I have " + troopObj.muster.current + " " + troops);
-								}
-								console.log("myForce is " + myForce);
 							}
 						}
 					}
@@ -511,7 +515,8 @@ var clock = setInterval(function(){
 			
 			if(myForce <= 0){
 				//you lose
-				console.log("You lose");
+				console.log("You lose");	//
+				gameLog("YOU LOSE", "warning");
 				//turn war off
 				war.flag = false;
 				war.continuation = false;
@@ -527,7 +532,7 @@ var clock = setInterval(function(){
 				
 				//you win!
 				console.log("You Win");
-				
+				gameLog("YOU WIN", "reward");
 				//promote surviving units
 				let placeOfWar = {};
 				for(var place in locations){

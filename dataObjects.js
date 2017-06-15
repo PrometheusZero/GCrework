@@ -15,6 +15,36 @@ const resources = {
 		total: 0,
 		current: 0,
 		currentDisplay: $('#automaticRifle-Total')
+	},
+	mortar60mm: {
+		total: 0,
+		current: 0,
+		currentDisplay: $('#mortar60mm-Total')
+	},
+	mortar80mm: {
+		total: 0,
+		current: 0,
+		currentDisplay: $('#mortar80mm-Total')
+	},
+	rocketLauncher: {
+		total: 0,
+		current: 0,
+		currentDisplay: $('#rocketLauncher-Total')
+	},
+	towLauncher: {
+		total: 0,
+		current: 0,
+		currentDisplay: $('#towLauncher-Total')
+	},
+	lightMachineGun: {
+		total: 0,
+		current: 0,
+		currentDisplay: $('#lightMachineGun-Total')
+	},
+	heavyMachineGun: {
+		total: 0,
+		current: 0,
+		currentDisplay: $('#heavyMachineGun-Total')
 	}
 };
 	
@@ -124,6 +154,58 @@ const combatant = {
 			drops: "rifle"
 		}
 	},
+	staffSergeant: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#staffSergeant-Total')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#musterStaffSergeantDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#enemyStaffSergeant'),
+			row: $('#staffSergeantRow')
+		},
+		stat: {
+			pow: 4,
+			def: 30,
+			components: [],
+			drops: "rifle"
+		}
+	},
+	lieutenant: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#lieutenant-Total')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#musterLieutenantDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#enemyLieutenant'),
+			row: $('#lieutenantRow')
+		},
+		stat: {
+			pow: 4,
+			def: 30,
+			components: [],
+			drops: "rifle"
+		}
+	},
 	fireTeam: {
 		home: {
 			total: 0,
@@ -197,6 +279,33 @@ const primaries = {
 		time: 1,
 		tCount: 0,
 		produces: [{type:"rifle",qty:1,},{type:"automaticRifle",qty:1}],
+		cost: [{type:"space",qty:1}]
+	},
+	mortarFactory: {
+		total: 0,
+		current: 0,
+		currentDisplay: $('mortarFactory-Total'),
+		time: 1,
+		tCount: 0,
+		produces: [{type:"mortar60mm",qty:1,},{type:"mortar80mm",qty:1}],
+		cost: [{type:"space",qty:1}]
+	},
+	rocketFactory: {
+		total: 0,
+		current: 0,
+		currentDisplay: $('rocketFactory-Total'),
+		time: 1,
+		tCount: 0,
+		produces: [{type:"rocketLauncher",qty:1,},{type:"towLauncher",qty:1}],
+		cost: [{type:"space",qty:1}]
+	},
+	machineGunFactory: {
+		total: 0,
+		current: 0,
+		currentDisplay: $('machineGunFactory-Total'),
+		time: 1,
+		tCount: 0,
+		produces: [{type:"lightMachineGun",qty:1,},{type:"heavyMachineGun",qty:1}],
 		cost: [{type:"space",qty:1}]
 	}
 };

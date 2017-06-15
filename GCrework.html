@@ -5,9 +5,11 @@
 		<meta http-equiv="content-type" content="text/html"; charset="utf-8">
 		<title>TEST</title>
 		<link type="text/css" rel="stylesheet" href="resources/materialize/css/materialize.min.css" media="screen,projection" />
+		<link rel="stylesheet" type="text/css" href="resources/dist/css/tooltipster.bundle.min.css" />
 		<link type="text/css" rel="stylesheet" href="GCrework.css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 	</head>
 
 	<body>
@@ -62,13 +64,21 @@
 							<td>sergeant</td>
 							<td id="sergeant-Total">0</td>
 						</tr>
+						<tr class="green-text text-darken-4">
+							<td>staffSergeant</td>
+							<td id="staffSergeant-Total">0</td>
+						</tr>
+						<tr class="green-text text-darken-4">
+							<td>lieutenant</td>
+							<td id="lieutenant-Total">0</td>
+						</tr>
 						<tr><td colspan="3">&nbsp;</td></tr>
 						<tr class="brown-text text-darken-4">
 							<td>fireTeam</td>
 							<td id="fireTeam-Total">0</td>
 						</tr>
 						<tr class="brown-text text-darken-4">
-							<td>riflesquad</td>
+							<td>rifleSquad</td>
 							<td id="rifleSquad-Total">0</td>
 						</tr>
 						<tr><td colspan="3">&nbsp;</td></tr>
@@ -80,6 +90,30 @@
 							<td>automaticRifle</td>
 							<td id="automaticRifle-Total">0</td>
 						</tr>
+						<tr class="red-text text-darken-4">
+							<td>mortar60mm</td>
+							<td id="mortar60mm-Total">0</td>
+						</tr>
+						<tr class="red-text text-darken-4">
+							<td>mortar80mm</td>
+							<td id="mortar80mm-Total">0</td>
+						</tr>
+						<tr class="red-text text-darken-4">
+							<td>rocketLauncher</td>
+							<td id="rocketLauncher-Total">0</td>
+						</tr>
+						<tr class="red-text text-darken-4">
+							<td>towLauncher</td>
+							<td id="towLauncher-Total">0</td>
+						</tr>
+						<tr class="red-text text-darken-4">
+							<td>lightMachineGun</td>
+							<td id="lightMachineGun-Total">0</td>
+						</tr>
+						<tr class="red-text text-darken-4">
+							<td>heavyMachineGun</td>
+							<td id="heavyMachineGun-Total">0</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -89,7 +123,7 @@
 					<div class="col s12">
 						<ul class="tabs">
 							<li class="tab col s2"><a href="#tab1">Personnel</a></li>
-							<li class="tab col s2"><a href="#tab2">Weapons</a></li>
+							<li class="tab col s2"><a href="#tab2">Buildings</a></li>
 							<li class="tab col s2"><a href="#tab3">Muster</a></li>
 							<li class="tab col s2"><a href="#tab4">Options</a></li>
 						</ul>
@@ -110,8 +144,10 @@
 							</div>
 							<div class="row">
 								<div class="col s6">
-									<a id="generateConscript" class="waves-effect waves-light btn-large">Generate Conscript</a>
-									<a id="generateSoldier" class="waves-effect waves-light btn-large">Form Soldier</a>
+									<a id="generateConscript" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-conscript">Generate Conscript</a>
+									<div class="tooltip_templates">
+										<span id="gen-conscript">Requirements:<br />None</span>
+									</div>
 								</div>
 								<div class="col s6">
 									
@@ -119,9 +155,24 @@
 							</div>
 							<div class="row">
 								<div class="col s6">
-									<a id="generateFireTeam" class="waves-effect waves-light btn-large">Form Fire Team</a>
+									<a id="generateSoldier" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-soldier">Form Soldier</a>
+									<div class="tooltip_templates">
+										<span id="gen-soldier">Requirements:<br />1 Conscript<br />1 Rifle</span>
+									</div>
 								</div>
 								<div class="col s6">
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s6">
+									<a id="generateFireTeam" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-fireTeam">Form Fire Team</a>
+									<div class="tooltip_templates">
+										<span id="gen-fireTeam">Requirements:<br />1 Corporal<br />3 Soldiers<br />1 Automatic Rifle</span>
+									</div>
+								</div>
+								<div class="col s6">
+								
 								</div>
 							</div>
 						</div>
@@ -176,22 +227,50 @@
 										</tr>
 										<tr>
 											<td>
-												<a id="musterConscript" class="waves-effect waves-light btn">Conscript</a>
-												<a id="musterConscriptHalf" class="waves-effect waves-light btn"><i class="material-icons ">play_arrow</i></a>
-												<a id="musterConscriptFull" class="waves-effect waves-light btn"><i class="material-icons ">fast_forward</i></a>
+												<a id="musterConscript" class="waves-effect waves-light btn btn-small">Conscript</a>
+												<a id="musterConscriptHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="musterConscriptFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
 											</td>
 											<td><span id="musterConscriptDisplay">0</span></td>
 										</tr>
 										<tr>
-											<td><a id="musterSoldier" class="waves-effect waves-light btn">Soldier</a></td>
+											<td>
+												<a id="musterSoldier" class="waves-effect waves-light btn btn-small">Soldier</a>
+												<a id="musterSoldierHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="musterSoldierFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
+											</td>
 											<td><span id="musterSoldierDisplay">0</span></td>
 										</tr>
 										<tr>
-											<td><a id="musterFireTeam" class="waves-effect waves-light btn">Fire Team</a></td>
+											<td>
+												<a id="musterCorporal" class="waves-effect waves-light btn btn-small">Corporal</a>
+												<a id="musterCorporalHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="musterCorporalFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
+											</td>
+											<td><span id="musterCorporalDisplay">0</span></td>
+										</tr>
+										<tr>
+											<td>
+												<a id="musterSergeant" class="waves-effect waves-light btn btn-small">Sergeant</a>
+												<a id="musterSergeantHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="musterSergeantFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
+											</td>
+											<td><span id="musterSergeantDisplay">0</span></td>
+										</tr>
+										<tr>
+											<td>
+												<a id="musterFireTeam" class="waves-effect waves-light btn btn-small">Fire Team</a>
+												<a id="musterFireTeamHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="musterFireTeamFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
+											</td>
 											<td><span id="musterFireTeamDisplay">0</span></td>
 										</tr>
 										<tr>
-											<td><a id="musterRifleSquad" class="waves-effect waves-light btn">Rifle Squad</a></td>
+											<td>
+												<a id="musterRifleSquad" class="waves-effect waves-light btn btn-small">Rifle Squad</a>
+												<a id="musterRifleSquadHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="musterRifleSquadFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
+											</td>
 											<td><span id="musterRifleSquadDisplay">0</span></td>
 										</tr>
 									</table>
@@ -232,6 +311,13 @@
 					<div id="tab4" class="col s12">Area 4</div>
 				</div>
 			</div>
+			
+			<div class="logPanel">
+				<h5>Event Log</h5>
+				<table id="logTable">
+					
+				</table>
+			</div>
 		
 		</main>
 		
@@ -242,6 +328,7 @@
 		
 		<script type="text/javascript" src="resources/jquery-2.1.1.js"></script>
 		<script type="text/javascript" src="resources/materialize/js/materialize.min.js"></script>
+		<script type="text/javascript" src="resources/dist/js/tooltipster.bundle.min.js"></script>
 		<script type="text/javascript" src="dataObjects.js"></script>
 		<script type="text/javascript" src="eventListeners.js"></script>
 		<script type="text/javascript" src="engine.js"></script>
