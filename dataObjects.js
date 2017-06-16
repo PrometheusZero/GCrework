@@ -3,48 +3,48 @@ const resources = {
 	space: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('#space-Total')
+		currentDisplay: $('#space-SidePanelDisplay')
 	},
 	//EQUPMENT
 	rifle: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('#rifle-Total')
+		currentDisplay: $('#rifle-SidePanelDisplay')
 	},
 	automaticRifle: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('#automaticRifle-Total')
+		currentDisplay: $('#automaticRifle-SidePanelDisplay')
 	},
 	mortar60mm: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('#mortar60mm-Total')
+		currentDisplay: $('#mortar60mm-SidePanelDisplay')
 	},
 	mortar80mm: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('#mortar80mm-Total')
+		currentDisplay: $('#mortar80mm-SidePanelDisplay')
 	},
 	rocketLauncher: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('#rocketLauncher-Total')
+		currentDisplay: $('#rocketLauncher-SidePanelDisplay')
 	},
 	towLauncher: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('#towLauncher-Total')
+		currentDisplay: $('#towLauncher-SidePanelDisplay')
 	},
 	lightMachineGun: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('#lightMachineGun-Total')
+		currentDisplay: $('#lightMachineGun-SidePanelDisplay')
 	},
 	heavyMachineGun: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('#heavyMachineGun-Total')
+		currentDisplay: $('#heavyMachineGun-SidePanelDisplay')
 	}
 };
 	
@@ -54,20 +54,20 @@ const combatant = {
 		home:{
 			total: 0,
 			current: 0,
-			currentDisplay: $('#conscript-Total')
+			currentDisplay: $('#conscript-SidePanelDisplay')
 		},
 		muster: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#musterConscriptDisplay')
+			currentDisplay: $('#conscript-musterDisplay')
 		},
 		enemy: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#enemyConscript'),
-			row: $('#conscriptRow')
+			currentDisplay: $('#conscript-enemyDisplay'),
+			row: $('#conscript-IsEnemyRow')
 		},
 		stat: {
 			pow: 1,
@@ -80,20 +80,20 @@ const combatant = {
 		home: {
 			total: 0,
 			current: 0,
-			currentDisplay: $('#soldier-Total')
+			currentDisplay: $('#soldier-SidePanelDisplay')
 		},
 		muster: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#musterSoldierDisplay')
+			currentDisplay: $('#soldier-musterDisplay')
 		},
 		enemy: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#enemySoldier'),
-			row: $('#soldierRow')
+			currentDisplay: $('#soldier-enemyDisplay'),
+			row: $('#soldier-IsEnemyRow')
 		},
 		stat: {
 			pow: 2,
@@ -106,20 +106,20 @@ const combatant = {
 		home: {
 			total: 0,
 			current: 0,
-			currentDisplay: $('#corporal-Total')
+			currentDisplay: $('#corporal-SidePanelDisplay')
 		},
 		muster: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#musterCorporalDisplay')
+			currentDisplay: $('#corporal-musterDisplay')
 		},
 		enemy: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#enemyCorporal'),
-			row: $('#corporalRow')
+			currentDisplay: $('#corporal-enemyDisplay'),
+			row: $('#corporal-IsEnemyRow')
 		},
 		stat: {
 			pow: 3,
@@ -132,20 +132,20 @@ const combatant = {
 		home: {
 			total: 0,
 			current: 0,
-			currentDisplay: $('#sergeant-Total')
+			currentDisplay: $('#sergeant-SidePanelDisplay')
 		},
 		muster: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#musterSergeantDisplay')
+			currentDisplay: $('#sergeant-musterDisplay')
 		},
 		enemy: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#enemySergeant'),
-			row: $('#sergeantRow')
+			currentDisplay: $('#sergeant-enemyDisplay'),
+			row: $('#sergeant-IsEnemyRow')
 		},
 		stat: {
 			pow: 4,
@@ -158,20 +158,20 @@ const combatant = {
 		home: {
 			total: 0,
 			current: 0,
-			currentDisplay: $('#staffSergeant-Total')
+			currentDisplay: $('#staffSergeant-SidePanelDisplay')
 		},
 		muster: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#musterStaffSergeantDisplay')
+			currentDisplay: $('#staffSergeant-musterDisplay')
 		},
 		enemy: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#enemyStaffSergeant'),
-			row: $('#staffSergeantRow')
+			currentDisplay: $('#staffSergeant-enemyDisplay'),
+			row: $('#staffSergeant-IsEnemyRow')
 		},
 		stat: {
 			pow: 4,
@@ -184,20 +184,20 @@ const combatant = {
 		home: {
 			total: 0,
 			current: 0,
-			currentDisplay: $('#lieutenant-Total')
+			currentDisplay: $('#lieutenant-SidePanelDisplay')
 		},
 		muster: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#musterLieutenantDisplay')
+			currentDisplay: $('#lieutenant-musterDisplay')
 		},
 		enemy: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#enemyLieutenant'),
-			row: $('#lieutenantRow')
+			currentDisplay: $('#lieutenant-enemyDisplay'),
+			row: $('#lieutenant-IsEnemyRow')
 		},
 		stat: {
 			pow: 4,
@@ -210,20 +210,20 @@ const combatant = {
 		home: {
 			total: 0,
 			current: 0,
-			currentDisplay: $('#fireTeam-Total')
+			currentDisplay: $('#fireTeam-SidePanelDisplay')
 		},
 		muster: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#musterFireTeamDisplay')
+			currentDisplay: $('#fireTeam-musterDisplay')
 		},
 		enemy: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#enemyFireTeam'),
-			row: $('#fireTeamRow')
+			currentDisplay: $('#fireTeam-enemyDisplay'),
+			row: $('#fireTeam-IsEnemyRow')
 		},
 		stat: {
 			pow: 9,
@@ -236,20 +236,20 @@ const combatant = {
 		home: {
 			total: 0,
 			current: 0,
-			currentDisplay: $('#rifleSquad-Total')
+			currentDisplay: $('#rifleSquad-SidePanelDisplay')
 		},
 		muster: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#musterRifleSquadDisplay')
+			currentDisplay: $('#rifleSquad-musterDisplay')
 		},
 		enemy: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#enemyRifleSquad'),
-			row: $('#rifleSquadRow')
+			currentDisplay: $('#rifleSquad-enemyDisplay'),
+			row: $('#rifleSquad-IsEnemyRow')
 		},
 		stat: {
 			pow: 31,
@@ -265,7 +265,7 @@ const primaries = {
 	recruitOffice: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('recruitOffice-Total'),
+		currentDisplay: $('recruitOffice-SidePanelDisplay'),
 		time: 1,
 		tCount: 0,
 		produces: [{type:"conscript",qty:1},{type:"conscript",qty:2}],
@@ -275,7 +275,7 @@ const primaries = {
 	rifleFactory: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('rifleFactory-Total'),
+		currentDisplay: $('rifleFactory-SidePanelDisplay'),
 		time: 1,
 		tCount: 0,
 		produces: [{type:"rifle",qty:1,},{type:"automaticRifle",qty:1}],
@@ -284,7 +284,7 @@ const primaries = {
 	mortarFactory: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('mortarFactory-Total'),
+		currentDisplay: $('mortarFactory-SidePanelDisplay'),
 		time: 1,
 		tCount: 0,
 		produces: [{type:"mortar60mm",qty:1,},{type:"mortar80mm",qty:1}],
@@ -293,7 +293,7 @@ const primaries = {
 	rocketFactory: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('rocketFactory-Total'),
+		currentDisplay: $('rocketFactory-SidePanelDisplay'),
 		time: 1,
 		tCount: 0,
 		produces: [{type:"rocketLauncher",qty:1,},{type:"towLauncher",qty:1}],
@@ -302,7 +302,7 @@ const primaries = {
 	machineGunFactory: {
 		total: 0,
 		current: 0,
-		currentDisplay: $('machineGunFactory-Total'),
+		currentDisplay: $('machineGunFactory-SidePanelDisplay'),
 		time: 1,
 		tCount: 0,
 		produces: [{type:"lightMachineGun",qty:1,},{type:"heavyMachineGun",qty:1}],

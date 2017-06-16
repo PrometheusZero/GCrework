@@ -17,7 +17,7 @@
 				<nav>
 					<div class="nav-wrapper blue-grey">
 						<div class="container">
-							<a href="#" class="brand-logo">TEST</a>
+							<a href="#" class="brand-logo">CONQUEST</a>
 						</div>
 					</div>
 				</nav>
@@ -37,82 +37,82 @@
 					<tbody>
 						<tr class="grey-text text-darken-3">
 							<td>Space</td>
-							<td id="space-Total">0</td>
+							<td id="space-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="grey-text text-darken-3">
 							<td>recruitOffice</td>
-							<td id="recruitOffice-Total">0</td>
+							<td id="recruitOffice-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="grey-text text-darken-3">
 							<td>rifleFactory</td>
-							<td id="rifleFactory-Total">0</td>
+							<td id="rifleFactory-SidePanelDisplay">0</td>
 						</tr>
 						<tr><td colspan="3">&nbsp;</td></tr>
 						<tr class="green-text text-darken-4">
 							<td>conscript</td>
-							<td id="conscript-Total">0</td>
+							<td id="conscript-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="green-text text-darken-4">
 							<td>soldier</td>
-							<td id="soldier-Total">0</td>
+							<td id="soldier-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="green-text text-darken-4">
 							<td>corporal</td>
-							<td id="corporal-Total">0</td>
+							<td id="corporal-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="green-text text-darken-4">
 							<td>sergeant</td>
-							<td id="sergeant-Total">0</td>
+							<td id="sergeant-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="green-text text-darken-4">
 							<td>staffSergeant</td>
-							<td id="staffSergeant-Total">0</td>
+							<td id="staffSergeant-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="green-text text-darken-4">
 							<td>lieutenant</td>
-							<td id="lieutenant-Total">0</td>
+							<td id="lieutenant-SidePanelDisplay">0</td>
 						</tr>
 						<tr><td colspan="3">&nbsp;</td></tr>
 						<tr class="brown-text text-darken-4">
 							<td>fireTeam</td>
-							<td id="fireTeam-Total">0</td>
+							<td id="fireTeam-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="brown-text text-darken-4">
 							<td>rifleSquad</td>
-							<td id="rifleSquad-Total">0</td>
+							<td id="rifleSquad-SidePanelDisplay">0</td>
 						</tr>
 						<tr><td colspan="3">&nbsp;</td></tr>
 						<tr class="red-text text-darken-4">
 							<td>rifle</td>
-							<td id="rifle-Total">0</td>
+							<td id="rifle-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="red-text text-darken-4">
 							<td>automaticRifle</td>
-							<td id="automaticRifle-Total">0</td>
+							<td id="automaticRifle-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="red-text text-darken-4">
 							<td>mortar60mm</td>
-							<td id="mortar60mm-Total">0</td>
+							<td id="mortar60mm-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="red-text text-darken-4">
 							<td>mortar80mm</td>
-							<td id="mortar80mm-Total">0</td>
+							<td id="mortar80mm-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="red-text text-darken-4">
 							<td>rocketLauncher</td>
-							<td id="rocketLauncher-Total">0</td>
+							<td id="rocketLauncher-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="red-text text-darken-4">
 							<td>towLauncher</td>
-							<td id="towLauncher-Total">0</td>
+							<td id="towLauncher-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="red-text text-darken-4">
 							<td>lightMachineGun</td>
-							<td id="lightMachineGun-Total">0</td>
+							<td id="lightMachineGun-SidePanelDisplay">0</td>
 						</tr>
 						<tr class="red-text text-darken-4">
 							<td>heavyMachineGun</td>
-							<td id="heavyMachineGun-Total">0</td>
+							<td id="heavyMachineGun-SidePanelDisplay">0</td>
 						</tr>
 					</tbody>
 				</table>
@@ -142,37 +142,106 @@
 									</div>
 								</div>
 							</div>
+							<!-- -->
 							<div class="row">
-								<div class="col s6">
-									<a id="generateConscript" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-conscript">Generate Conscript</a>
+								<div class="col s12">
+									<a id="conscript-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-conscript">Generate Conscript</a>
 									<div class="tooltip_templates">
 										<span id="gen-conscript">Requirements:<br />None</span>
 									</div>
 								</div>
-								<div class="col s6">
-									
-								</div>
 							</div>
+							<!-- -->
 							<div class="row">
-								<div class="col s6">
-									<a id="generateSoldier" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-soldier">Form Soldier</a>
+								<div class="col s12">
+									<a id="soldier-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-soldier">Form Soldier</a>
 									<div class="tooltip_templates">
 										<span id="gen-soldier">Requirements:<br />1 Conscript<br />1 Rifle</span>
 									</div>
-								</div>
-								<div class="col s6">
-									
+									<a id="assaultTeam-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-assaultTeam">Form assaultTeam</a>
+									<div class="tooltip_templates">
+										<span id="gen-assaultTeam">Requirements:<br />2 Soldiers<br />1 Missile Launcher</span>
+									</div>
 								</div>
 							</div>
+							<!-- -->
 							<div class="row">
-								<div class="col s6">
-									<a id="generateFireTeam" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-fireTeam">Form Fire Team</a>
+								<div class="col s12">
+									<a id="fireTeam-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-fireTeam">Form Fire Team</a>
 									<div class="tooltip_templates">
 										<span id="gen-fireTeam">Requirements:<br />1 Corporal<br />3 Soldiers<br />1 Automatic Rifle</span>
 									</div>
+									<a id="mortarSquad-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-mortarSquad">Form mortarSquad</a>
+									<div class="tooltip_templates">
+										<span id="gen-mortarSquad">Requirements:<br />1 Corporal<br />3 Soldiers<br />1 Mortar60mm</span>
+									</div>
+									<a id="assaultSquad-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-assaultSquad">Form assaultSquad</a>
+									<div class="tooltip_templates">
+										<span id="gen-assaultSquad">Requirements:<br />1 Corporal<br />2 assaultTeams</span>
+									</div>
+									<a id="mgTeam-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-mgTeam">Form mgTeam</a>
+									<div class="tooltip_templates">
+										<span id="gen-mgTeam">Requirements:<br />1 Corporal<br />3 Soldiers<br />1 MachineGun</span>
+									</div>
 								</div>
-								<div class="col s6">
-								
+							</div>
+							<!-- -->
+							<div class="row">
+								<div class="col s12">
+									<a id="rifleSquad-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-rifleSquad">Form Rifle Squad</a>
+									<div class="tooltip_templates">
+										<span id="gen-rifleSquad">Requirements:<br />1 Sergeant<br />3 Fire Teams</span>
+									</div>
+									<a id="assaultSection-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-assaultSection">Form assaultSection</a>
+									<div class="tooltip_templates">
+										<span id="gen-assaultSection">Requirements:<br />1 Sergeant<br />3 assaultSquad</span>
+									</div>
+									<a id="mgSquad-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-mgSquad">Form mgSquad</a>
+									<div class="tooltip_templates">
+										<span id="gen-mgSquad">Requirements:<br />1 Sergeant<br />2 mgTeam</span>
+									</div>
+								</div>
+							</div>
+							<!-- -->
+							<div class="row">
+								<div class="col s12">
+									<a id="mortarSection-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-mortarSection">Form mortarSection</a>
+									<div class="tooltip_templates">
+										<span id="gen-mortarSection">Requirements:<br />1 Staff Sergeant<br />3 mortarSquad</span>
+									</div>
+									<a id="mgSection-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-mgSection">Form mgSection</a>
+									<div class="tooltip_templates">
+										<span id="gen-mgSection">Requirements:<br />1 Staff Sergeant<br />3 mgSquad</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12">
+									<a id="platoonHQ-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-platoonHQ">Form platoonHQ</a>
+									<div class="tooltip_templates">
+										<span id="gen-platoonHQ">Requirements:<br />1 Leiutenant<br />1 Staff Sergeant<br />1 Sergeant<br />1 Soldier</span>
+									</div>
+									<a id="riflePlatoon-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-riflePlatoon">Form riflePlatoon</a>
+									<div class="tooltip_templates">
+										<span id="gen-riflePlatoon">Requirements:<br />1 Platoon HQ<br />3 Rifle Squads</span>
+									</div>
+									<a id="weaponsPlatoon-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-weaponsPlatoon">Form weaponsPlatoon</a>
+									<div class="tooltip_templates">
+										<span id="gen-weaponsPlatoon">Requirements:<br />1 Platoon HQ<br />1 Mortar Section<br />1 Assault Section<br />1 MG Section</span>
+									</div>
+								</div>
+							</div>
+							<!-- -->
+							<div class="row">
+								<div class="col s12">
+									<a id="rifleCompanyHQ-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-rifleCompanyHQ">Form rifleCompanyHQ</a>
+									<div class="tooltip_templates">
+										<span id="gen-rifleCompanyHQ">Requirements:<br />1 Captain<br />1 Leiutennant<br />2 Staff Sergeants<br />1 Corporal<br />1 Soldier</span>
+									</div>
+									<a id="rifleCompany-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-rifleCompany">Form rifleCompany</a>
+									<div class="tooltip_templates">
+										<span id="gen-rifleCompany">Requirements:<br />1 Rifle Company HQ<br />3 Rifle Platoon<br />1 Weapon Platoon</span>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -192,14 +261,43 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col s6">
-									<a id="buyRecruitOffice" class="waves-effect waves-light btn-large">Recruit Office</a>
-									<a id="buyRifleFactory" class="waves-effect waves-light btn-large">Rifle Factory</a>
-									<a id="buyBarracks" class="waves-effect waves-light btn-large">Barracks</a>
-									<a id="buyDrillSergeant" class="waves-effect waves-light btn-large">Drill Sgt</a>
+								<div class="col s12">
+									<a id="buyRecruitOffice" class="waves-effect waves-light btn-large" data-tooltip-content="#gen-recruitOffice">Recruit Office</a>
+									<div class="tooltip_templates">
+										<span id="gen-recruitOffice">Will generate 1 conscript per x seconds<br /><br />Has a chance to generate 2 conscripts instead</span>
+									</div>
 								</div>
-								<div class="col s6">
-									
+							</div>
+							<div class="row">
+								<div class="col s12">
+									<a id="buyRifleFactory" class="waves-effect waves-light btn-large" data-tooltip-content="#gen-rifleFactory">Rifle Factory</a>
+									<div class="tooltip_templates">
+										<span id="gen-rifleFactory">Will generate 1 rifle per x seconds<br />Has a chance to generate an automatic rifle instead</span>
+									</div>
+									<a id="buyMortarFactory" class="waves-effect waves-light btn-large" data-tooltip-content="#gen-mortarFactory">Mortar Factory</a>
+									<div class="tooltip_templates">
+										<span id="gen-mortarFactory">Will generate 1 60mm Mortar per x seconds<br /><br />Has a chance to generate a 80mm Mortar instead</span>
+									</div>
+									<a id="buyRocketLauncherFactory" class="waves-effect waves-light btn-large" data-tooltip-content="#gen-rocketLauncherFactory">RocketLauncher Factory</a>
+									<div class="tooltip_templates">
+										<span id="gen-rocketLauncherFactory">Will generate 1 Rocket Launcher per x seconds<br /><br />Has a chance to generate a TOW Launcher instead</span>
+									</div>
+									<a id="buyMachinegunFactory" class="waves-effect waves-light btn-large" data-tooltip-content="#gen-machinegunFactory">Machinegun Factory</a>
+									<div class="tooltip_templates">
+										<span id="gen-machinegunFactory">Will generate 1 Machinegun per x seconds<br /><br />Has a chance to generate a Heavy Machinegun instead</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12">
+									<a id="buyBarracks" class="waves-effect waves-light btn-large" data-tooltip-content="#gen-barracks">Barracks</a>
+									<div class="tooltip_templates">
+										<span id="gen-barracks">Every x seconds will attempt to form 1 soldier if components available</span>
+									</div>
+									<a id="buyDrillSergeant" class="waves-effect waves-light btn-large" data-tooltip-content="#gen-drillSergeant">Drill Sgt</a>
+									<div class="tooltip_templates">
+										<span id="gen-drillSergeant">Every x seconds will attempt to form 1 Fire Team if components available</span>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -227,51 +325,51 @@
 										</tr>
 										<tr>
 											<td>
-												<a id="musterConscript" class="waves-effect waves-light btn btn-small">Conscript</a>
-												<a id="musterConscriptHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
-												<a id="musterConscriptFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
+												<a id="conscript-muster-one" class="waves-effect waves-light btn btn-small">Conscript</a>
+												<a id="conscript-muster-half" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="conscript-muster-full" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
 											</td>
-											<td><span id="musterConscriptDisplay">0</span></td>
+											<td><span id="conscript-musterDisplay">0</span></td>
 										</tr>
 										<tr>
 											<td>
-												<a id="musterSoldier" class="waves-effect waves-light btn btn-small">Soldier</a>
-												<a id="musterSoldierHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
-												<a id="musterSoldierFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
+												<a id="soldier-muster-one" class="waves-effect waves-light btn btn-small">Soldier</a>
+												<a id="soldier-muster-half" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="soldier-muster-full" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
 											</td>
-											<td><span id="musterSoldierDisplay">0</span></td>
+											<td><span id="soldier-musterDisplay">0</span></td>
 										</tr>
 										<tr>
 											<td>
-												<a id="musterCorporal" class="waves-effect waves-light btn btn-small">Corporal</a>
-												<a id="musterCorporalHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
-												<a id="musterCorporalFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
+												<a id="corporal-muser-one" class="waves-effect waves-light btn btn-small">Corporal</a>
+												<a id="corporal-muser-half" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="corporal-muser-full" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
 											</td>
-											<td><span id="musterCorporalDisplay">0</span></td>
+											<td><span id="corporal-musterDisplay">0</span></td>
 										</tr>
 										<tr>
 											<td>
-												<a id="musterSergeant" class="waves-effect waves-light btn btn-small">Sergeant</a>
-												<a id="musterSergeantHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
-												<a id="musterSergeantFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
+												<a id="sergeant-muster-one" class="waves-effect waves-light btn btn-small">Sergeant</a>
+												<a id="sergeant-muster-half" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="sergeant-muster-full" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
 											</td>
-											<td><span id="musterSergeantDisplay">0</span></td>
+											<td><span id="sergeant-musterDisplay">0</span></td>
 										</tr>
 										<tr>
 											<td>
-												<a id="musterFireTeam" class="waves-effect waves-light btn btn-small">Fire Team</a>
-												<a id="musterFireTeamHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
-												<a id="musterFireTeamFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
+												<a id="fireTeam-muster-one" class="waves-effect waves-light btn btn-small">Fire Team</a>
+												<a id="fireTeam-muster-half" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="fireTeam-muster-full" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
 											</td>
-											<td><span id="musterFireTeamDisplay">0</span></td>
+											<td><span id="fireTeam-musterDisplay">0</span></td>
 										</tr>
 										<tr>
 											<td>
-												<a id="musterRifleSquad" class="waves-effect waves-light btn btn-small">Rifle Squad</a>
-												<a id="musterRifleSquadHalf" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
-												<a id="musterRifleSquadFull" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
+												<a id="rifleSquad-muster-one" class="waves-effect waves-light btn btn-small">Rifle Squad</a>
+												<a id="rifleSquad-muster-half" class="waves-effect waves-light btn btn-small"><i class="material-icons ">play_arrow</i></a>
+												<a id="rifleSquad-muster-full" class="waves-effect waves-light btn btn-small"><i class="material-icons ">fast_forward</i></a>
 											</td>
-											<td><span id="musterRifleSquadDisplay">0</span></td>
+											<td><span id="rifleSquad-musterDisplay">0</span></td>
 										</tr>
 									</table>
 								</div>
@@ -287,17 +385,29 @@
 											<th>Enemy</th>
 											<th>Qty</th>
 										</tr>
-										<tr id="soldierRow">
+										<tr id="conscript-IsEnemyRow">
+											<td>Conscript</td>
+											<td id="conscript-enemyDisplay">0</td>
+										</tr>
+										<tr id="soldier-IsEnemyRow">
 											<td>Soldier</td>
-											<td id="enemySoldier">0</td>
+											<td id="soldier-enemyDisplay">0</td>
 										</tr>
-										<tr id="fireTeamRow">
+										<tr id="corporal-IsEnemyRow">
+											<td>Corporal</td>
+											<td id="corporal-enemyDisplay">0</td>
+										</tr>
+										<tr id="sergeant-IsEnemyRow">
+											<td>Sergeant</td>
+											<td id="sergeant-enemyDisplay">0</td>
+										</tr>
+										<tr id="fireTeam-IsEnemyRow">
 											<td>Fire Team</td>
-											<td id="enemyFireTeam">0</td>
+											<td id="fireTeam-enemyDisplay">0</td>
 										</tr>
-										<tr id="rifleSquadRow">
+										<tr id="rifleSquad-IsEnemyRow">
 											<td>Rifle Squad</td>
-											<td id="enemyRifleSquad">0</td>
+											<td id="rifleSquad-enemyDisplay">0</td>
 										</tr>
 									</table>
 								</div>

@@ -1,12 +1,12 @@
 const eventListeners = {
 	//PERSONNEL
-	generateConscript: $('#generateConscript').click(function(){
+	generateConscript: $('#conscript-generateBtn').click(function(){
 		combatant.conscript.home.total++;
 		combatant.conscript.home.current++;
 		
 		updateDisplay();
 	}),
-	generateSoldier: $('#generateSoldier').click(function(){
+	generateSoldier: $('#soldier-generateBtn').click(function(){
 		if(combatant.conscript.home.current >= 1 && resources.rifle.current >= 1){
 			combatant.conscript.home.current--;
 			resources.rifle.current--;
@@ -23,7 +23,7 @@ const eventListeners = {
 			}
 		}
 	}),
-	generateFireTeam: $('#generateFireTeam').click(function(){
+	generateFireTeam: $('#fireTeam-generateBtn').click(function(){
 		if(combatant.corporal.home.current >= 1 && resources.automaticRifle.current >= 1 && combatant.soldier.home.current >= 2){
 			combatant.corporal.home.current--;
 			resources.automaticRifle.current--;
@@ -90,7 +90,7 @@ const eventListeners = {
 		}
 	}),
 	//MUSTER
-	musterConscript: $('#musterConscript').click(function(){
+	musterConscript: $('#conscript-muster-one').click(function(){
 		if(combatant.conscript.home.current >= 1){
 			combatant.conscript.home.current--;
 			combatant.conscript.muster.current++;
@@ -99,7 +99,7 @@ const eventListeners = {
 			updateDisplay();
 		}
 	}),
-	musterConscriptHalf: $('#musterConscriptHalf').click(function(){
+	musterConscriptHalf: $('#conscript-muster-half').click(function(){
 		let half = Math.floor(combatant.conscript.home.current / 2);
 			combatant.conscript.home.current -= half;
 			combatant.conscript.muster.current += half;
@@ -107,7 +107,7 @@ const eventListeners = {
 			
 			updateDisplay();
 	}),
-	musterConscriptFull: $('#musterConscriptFull').click(function(){
+	musterConscriptFull: $('#conscript-muster-full').click(function(){
 		let full = Math.floor(combatant.conscript.home.current);
 			combatant.conscript.home.current -= full;
 			combatant.conscript.muster.current += full;
@@ -115,7 +115,7 @@ const eventListeners = {
 			
 			updateDisplay();
 	}),
-	musterSoldier: $('#musterSoldier').click(function(){
+	musterSoldier: $('#soldier-muster-one').click(function(){
 		if(combatant.soldier.home.current >= 1){
 			combatant.soldier.home.current--;
 			combatant.soldier.muster.current++;
@@ -124,7 +124,7 @@ const eventListeners = {
 			updateDisplay();
 		}
 	}),
-	musterSoldierHalf: $('#musterSoldierHalf').click(function(){
+	musterSoldierHalf: $('#soldier-muster-half').click(function(){
 		let half = Math.floor(combatant.soldier.home.current / 2);
 			combatant.soldier.home.current -= half;
 			combatant.soldier.muster.current += half;
@@ -132,7 +132,7 @@ const eventListeners = {
 			
 			updateDisplay();
 	}),
-	musterSoldierFull: $('#musterSoldierFull').click(function(){
+	musterSoldierFull: $('#soldier-muster-full').click(function(){
 		let full = Math.floor(combatant.soldier.home.current);
 			combatant.soldier.home.current -= full;
 			combatant.soldier.muster.current += full;
@@ -140,7 +140,7 @@ const eventListeners = {
 			
 			updateDisplay();
 	}),
-	musterCorporal: $('#musterCorporal').click(function(){
+	musterCorporal: $('#corporal-muster-one').click(function(){
 		if(combatant.corporal.home.current >= 1){
 			combatant.corporal.home.current--;
 			combatant.corporal.muster.current++;
@@ -149,7 +149,7 @@ const eventListeners = {
 			updateDisplay();
 		}
 	}),
-	musterCorporalHalf: $('#musterCorporalHalf').click(function(){
+	musterCorporalHalf: $('#corporal-muster-half').click(function(){
 		let half = Math.floor(combatant.corporal.home.current / 2);
 			combatant.corporal.home.current -= half;
 			combatant.corporal.muster.current += half;
@@ -157,7 +157,7 @@ const eventListeners = {
 			
 			updateDisplay();
 	}),
-	musterCorporalFull: $('#musterCorporalFull').click(function(){
+	musterCorporalFull: $('#corporal-muster-full').click(function(){
 		let full = Math.floor(combatant.corporal.home.current);
 			combatant.corporal.home.current -= full;
 			combatant.corporal.muster.current += full;
@@ -165,7 +165,7 @@ const eventListeners = {
 			
 			updateDisplay();
 	}),
-	musterSergeant: $('#musterSergeant').click(function(){
+	musterSergeant: $('#sergeant-muster-one').click(function(){
 		if(combatant.sergeant.home.current >= 1){
 			combatant.sergeant.home.current--;
 			combatant.sergeant.muster.current++;
@@ -174,7 +174,7 @@ const eventListeners = {
 			updateDisplay();
 		}
 	}),
-	musterSergeantHalf: $('#musterSergeantHalf').click(function(){
+	musterSergeantHalf: $('#sergeant-muster-half').click(function(){
 		let half = Math.floor(combatant.sergeant.home.current / 2);
 			combatant.sergeant.home.current -= half;
 			combatant.sergeant.muster.current += half;
@@ -182,7 +182,7 @@ const eventListeners = {
 			
 			updateDisplay();
 	}),
-	musterSergeantFull: $('#musterSergeantFull').click(function(){
+	musterSergeantFull: $('#sergeant-muster-full').click(function(){
 		let full = Math.floor(combatant.sergeant.home.current);
 			combatant.sergeant.home.current -= full;
 			combatant.sergeant.muster.current += full;
@@ -190,7 +190,7 @@ const eventListeners = {
 			
 			updateDisplay();
 	}),
-	musterFireTeam: $('#musterFireTeam').click(function(){
+	musterFireTeam: $('#fireTeam-muster-one').click(function(){
 		if(combatant.fireTeam.home.current >= 1){
 			combatant.fireTeam.home.current--;
 			combatant.fireTeam.muster.current++;
@@ -199,7 +199,7 @@ const eventListeners = {
 			updateDisplay();
 		}
 	}),
-	musterFireTeamHalf: $('#musterFireTeamHalf').click(function(){
+	musterFireTeamHalf: $('#fireTeam-muster-half').click(function(){
 		let half = Math.floor(combatant.fireTeam.home.current / 2);
 			combatant.fireTeam.home.current -= half;
 			combatant.fireTeam.muster.current += half;
@@ -207,7 +207,7 @@ const eventListeners = {
 			
 			updateDisplay();
 	}),
-	musterFireTeamFull: $('#musterFireTeamFull').click(function(){
+	musterFireTeamFull: $('#fireTeam-muster-full').click(function(){
 		let full = Math.floor(combatant.fireTeam.home.current);
 			combatant.fireTeam.home.current -= full;
 			combatant.fireTeam.muster.current += full;
@@ -215,7 +215,7 @@ const eventListeners = {
 			
 			updateDisplay();
 	}),
-	musterRifleSquad: $('#musterRifleSquad').click(function(){
+	musterRifleSquad: $('#rifleSquad-muster-one').click(function(){
 		if(combatant.rifleSquad.home.current >= 1){
 			combatant.rifleSquad.home.current--;
 			combatant.rifleSquad.muster.current++;
@@ -224,7 +224,7 @@ const eventListeners = {
 			updateDisplay();
 		}
 	}),
-	musterRifleSquadHalf: $('#musterRifleSquadHalf').click(function(){
+	musterRifleSquadHalf: $('#rifleSquad-muster-half').click(function(){
 		let half = Math.floor(combatant.rifleSquad.home.current / 2);
 			combatant.rifleSquad.home.current -= half;
 			combatant.rifleSquad.muster.current += half;
@@ -232,7 +232,7 @@ const eventListeners = {
 			
 			updateDisplay();
 	}),
-	musterRifleSquadFull: $('#musterRifleSquadFull').click(function(){
+	musterRifleSquadFull: $('#rifleSquad-muster-full').click(function(){
 		let full = Math.floor(combatant.rifleSquad.home.current);
 			combatant.rifleSquad.home.current -= full;
 			combatant.rifleSquad.muster.current += full;

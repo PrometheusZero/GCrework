@@ -93,11 +93,15 @@ $(document).ready(function(){
 		let testObj = combatant[test];
 		testObj.home.current += 100;
 	}
+	
 	$('.tooltip').tooltipster({
 		contentAsHTML: true
 	});
 	
 	gameLog("Welcome to Conquest! Recruit conscripts and send them to war!", "normal");
+	setTimeout(function(){
+		gameLog("Win wars to promote units and win space for buildings!", "normal");
+	}, 2000);
 });
 
 const war = {
@@ -331,6 +335,8 @@ var clock = setInterval(function(){
 			}
 		}
 	}
+	// END OF PRIMARIES LOOP /////////////////////////
+	
 	
 	//LOOP THROUGH TRANSDUCERS, CHECK IF CAN PROCESS, THEN PROCESS IF CAN.
 	for(var stat in transducers){
@@ -403,7 +409,10 @@ var clock = setInterval(function(){
 			}	
 		}
 	}
+	// END OF TRANSDUCERS LOOP ///////////////////
 	
+	
+	// CHECK FOR WAR, PROCESS IS NESSACARY ///////
 	if(war.flag === true){
 		var myForce = 0;
 		for(var troops in combatant){
@@ -594,6 +603,7 @@ var clock = setInterval(function(){
 						let bootyObj = resources[booty];
 						if(war.loot[i] == booty){
 							console.log("looted a " + booty);
+							gameLog("Looted a " + booty, "reward")
 							bootyObj.current++;
 							bootyObj.total++;
 						}
@@ -607,9 +617,9 @@ var clock = setInterval(function(){
 			}
 			//otherwise, the war continues next tick...
 			console.log("End of round");
-
 		}
 	}
+	// END OF WAR ////////////////////
 
 	updateDisplay();
 },1000);
