@@ -206,6 +206,32 @@ const combatant = {
 			drops: "rifle"
 		}
 	},
+	assaultTeam {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#assaultTeam-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#assaultTeam-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#assaultTeam-enemyDisplay'),
+			row: $('#assaultTeam-IsEnemyRow')
+		},
+		stat: {
+			pow: 9,
+			def: 50,
+			components: ["soldier", "soldier"],
+			drops: "rocketLauncher"
+		}
+	},
 	fireTeam: {
 		home: {
 			total: 0,

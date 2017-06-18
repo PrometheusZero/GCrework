@@ -44,7 +44,7 @@ const eventListeners = {
 			}
 		}
 	}),
-	//BUILDINGS
+	//BUILDINGS - PRIMARIES
 	buyRecruitOffice: $('#buyRecruitOffice').click(function(){
 		if(resources.space.current > 0){
 			primaries.recruitOffice.total++;
@@ -67,6 +67,39 @@ const eventListeners = {
 			gameLog("Not enough space", "warning");
 		}
 	}),
+	buyMortarFactory: $('#buyMortarFactory').click(function(){
+		if(resources.space.current > 0){
+			primaries.mortarFactory.total++;
+			primaries.mortarFactory.current++;
+			resources.space.current--;
+
+			updateDisplay();
+		}else{
+			gameLog("Not enough space", "warning");
+		}
+	}),
+	buyRocketLauncherFactory: $('#buyRocketLauncherFactory').click(function(){
+		if(resources.space.current > 0){
+			primaries.rocketFactory.total++;
+			primaries.rocketFactory.current++;
+			resources.space.current--;
+
+			updateDisplay();
+		}else{
+			gameLog("Not enough space", "warning");
+		}
+	}),
+	buyMachinegunFactory: $('#buyMachinegunFactory').click(function(){
+		if(resources.space.current > 0){
+			primaries.machineGunFactory.total++;
+			primaries.machineGunFactory.current++;
+			resources.space.current--;
+
+			updateDisplay();
+		}else{
+		
+	}),
+	//BUILDINGS - TRANSDUCERS
 	buyBarracks: $('#buyBarracks').click(function(){
 		if(resources.space.current > 0){
 			transducers.rifleBarracks.total++;
