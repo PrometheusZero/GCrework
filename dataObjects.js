@@ -71,7 +71,7 @@ const combatant = {
 		},
 		stat: {
 			pow: 1,
-			def: 10,
+			def: 20,
 			components: [],
 			drops: ""
 		}
@@ -97,7 +97,7 @@ const combatant = {
 		},
 		stat: {
 			pow: 2,
-			def: 10,
+			def: 20,
 			components: [],
 			drops: "rifle"
 		}
@@ -122,8 +122,8 @@ const combatant = {
 			row: $('#corporal-IsEnemyRow')
 		},
 		stat: {
-			pow: 3,
-			def: 20,
+			pow: 2,
+			def: 30,
 			components: [],
 			drops: "rifle"
 		}
@@ -148,8 +148,8 @@ const combatant = {
 			row: $('#sergeant-IsEnemyRow')
 		},
 		stat: {
-			pow: 4,
-			def: 30,
+			pow: 2,
+			def: 40,
 			components: [],
 			drops: "rifle"
 		}
@@ -174,8 +174,8 @@ const combatant = {
 			row: $('#staffSergeant-IsEnemyRow')
 		},
 		stat: {
-			pow: 4,
-			def: 30,
+			pow: 2,
+			def: 50,
 			components: [],
 			drops: "rifle"
 		}
@@ -200,10 +200,244 @@ const combatant = {
 			row: $('#lieutenant-IsEnemyRow')
 		},
 		stat: {
-			pow: 4,
-			def: 30,
+			pow: 2,
+			def: 60,
 			components: [],
 			drops: "rifle"
+		}
+	},
+	captain: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#captain-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#captain-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#captain-enemyDisplay'),
+			row: $('#captain-IsEnemyRow')
+		},
+		stat: {
+			pow: 2,
+			def: 70,
+			components: [],
+			drops: "rifle"
+		}
+	},
+	major: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#major-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#major-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#major-enemyDisplay'),
+			row: $('#major-IsEnemyRow')
+		},
+		stat: {
+			pow: 2,
+			def: 80,
+			components: [],
+			drops: "rifle"
+		}
+	},
+	fireTeam: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#fireTeam-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#fireTeam-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#fireTeam-enemyDisplay'),
+			row: $('#fireTeam-IsEnemyRow')
+		},
+		stat: {
+			pow: 10,
+			def: 90,
+			components: ["corporal", "soldier", "soldier", "soldier"],
+			drops: "automaticRifle"
+		}
+	},
+	rifleSquad: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#rifleSquad-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#rifleSquad-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#rifleSquad-enemyDisplay'),
+			row: $('#rifleSquad-IsEnemyRow')
+		},
+		stat: {
+			pow: 32,
+			def: 310,
+			components: ["sergeant", "fireTeam", "fireTeam", "fireTeam"],
+			drops: "automaticRifle"
+		}
+	},
+	platoonHQ: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#platoonHQ-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#platoonHQ-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#platoonHQ-enemyDisplay'),
+			row: $('#platoonHQ-IsEnemyRow')
+		},
+		stat: {
+			pow: 8,
+			def: 170,
+			components: ["lieutenant", "staffSergeant", "sergeant", "soldier"],
+			drops: "automaticRifle"
+		}
+	},
+	riflePlatoon: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#platoonHQ-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#platoonHQ-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#platoonHQ-enemyDisplay'),
+			row: $('#platoonHQ-IsEnemyRow')
+		},
+		stat: {
+			pow: 8,
+			def: 170,
+			components: ["platoonHQ", "rifleSquad", "rifleSquad", "rifleSquad"],
+			drops: "automaticRifle"
+		}
+	},
+	mortarTeam:{
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#mortarTeam-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mortarTeam-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mortarTeam-enemyDisplay'),
+			row: $('#mortarTeam-IsEnemyRow')
+		},
+		stat: {
+			pow: 8,
+			def: 40,
+			components: ["soldier", "soldier"],
+			drops: "mortar60mm"
+		}
+	},
+	mortarSquad:{
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#mortarSquad-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mortarSquad-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mortarSquad-enemyDisplay'),
+			row: $('#mortarSquad-IsEnemyRow')
+		},
+		stat: {
+			pow: 26,
+			def: 150,
+			components: ["corporal", "mortarTeam", "mortarTeam", "mortarTeam"],
+			drops: "mortar60mm"
+		}
+	},
+	mortarSection: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#mortarSection-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mortarSection-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mortarSection-enemyDisplay'),
+			row: $('#mortarSection-IsEnemyRow')
+		},
+		stat: {
+			pow: 80,
+			def: 490,
+			components: ["sergeant", "mortarSquad", "mortarSquad", "mortarSquad"],
+			drops: "mortar60mm"
 		}
 	},
 	assaultTeam {
@@ -232,56 +466,160 @@ const combatant = {
 			drops: "rocketLauncher"
 		}
 	},
-	fireTeam: {
+	assaultSquad: {
 		home: {
 			total: 0,
 			current: 0,
-			currentDisplay: $('#fireTeam-SidePanelDisplay')
+			currentDisplay: $('#assaultSquad-SidePanelDisplay')
 		},
 		muster: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#fireTeam-musterDisplay')
+			currentDisplay: $('#assaultSquad-musterDisplay')
 		},
 		enemy: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#fireTeam-enemyDisplay'),
-			row: $('#fireTeam-IsEnemyRow')
+			currentDisplay: $('#assaultSquad-enemyDisplay'),
+			row: $('#assaultSquad-IsEnemyRow')
 		},
 		stat: {
-			pow: 9,
-			def: 50,
-			components: ["corporal", "soldier", "soldier", "soldier"],
-			drops: "automaticRifle"
+			pow: 18,
+			def: 110,
+			components: ["corporal", "assaultTeam", "assaultTeam"],
+			drops: "rocketLauncher"
 		}
 	},
-	rifleSquad: {
+	assaultSection: {
 		home: {
 			total: 0,
 			current: 0,
-			currentDisplay: $('#rifleSquad-SidePanelDisplay')
+			currentDisplay: $('#assaultSection-SidePanelDisplay')
 		},
 		muster: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#rifleSquad-musterDisplay')
+			currentDisplay: $('#assaultSection-musterDisplay')
 		},
 		enemy: {
 			total: 0,
 			current: 0,
 			temp: 0,
-			currentDisplay: $('#rifleSquad-enemyDisplay'),
-			row: $('#rifleSquad-IsEnemyRow')
+			currentDisplay: $('#assaultSection-enemyDisplay'),
+			row: $('#assaultSection-IsEnemyRow')
 		},
 		stat: {
-			pow: 31,
-			def: 180,
-			components: ["sergeant", "fireTeam", "fireTeam", "fireTeam"],
-			drops: "automaticRifle"
+			pow: 56,
+			def: 370,
+			components: ["sergeant", "assaultSquad", "assaultSquad", "assaultSquad"],
+			drops: "rocketLauncher"
+		}
+	},
+	mgTeam: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#mgTeam-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mgTeam-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mgTeam-enemyDisplay'),
+			row: $('#mgTeam-IsEnemyRow')
+		},
+		stat: {
+			pow: 12,
+			def: 90,
+			components: ["corporal", "soldier", "soldier", "soldier"],
+			drops: "rocketLauncher"
+		}
+	},
+	mgSquad: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#mgSquad-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mgSquad-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mgSquad-enemyDisplay'),
+			row: $('#mgSquad-IsEnemyRow')
+		},
+		stat: {
+			pow: 26,
+			def: 220,
+			components: ["sergeant", "mgTeam", "mgTeam"],
+			drops: "lightMachineGun"
+		}
+	},
+	mgSection: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#mgSection-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mgSection-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#mgSection-enemyDisplay'),
+			row: $('#mgSection-IsEnemyRow')
+		},
+		stat: {
+			pow: 80,
+			def: 710,
+			components: ["staffSergeant", "mgSquad", "mgSquad", "mgSquad"],
+			drops: "lightMachineGun"
+		}
+	},
+	weaponsPlatoon: {
+		home: {
+			total: 0,
+			current: 0,
+			currentDisplay: $('#weaponsPlatoon-SidePanelDisplay')
+		},
+		muster: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#weaponsPlatoon-musterDisplay')
+		},
+		enemy: {
+			total: 0,
+			current: 0,
+			temp: 0,
+			currentDisplay: $('#weaponsPlatoon-enemyDisplay'),
+			row: $('#weaponsPlatoon-IsEnemyRow')
+		},
+		stat: {
+			pow: 80,
+			def: 710,
+			components: ["platoonHQ", "mortarSection", "assaultSection", "mgSection"],
+			drops: "lightMachineGun"
 		}
 	}
 };
