@@ -440,7 +440,7 @@ const combatant = {
 			drops: "mortar60mm"
 		}
 	},
-	assaultTeam {
+	assaultTeam: {
 		home: {
 			total: 0,
 			current: 0,
@@ -460,8 +460,8 @@ const combatant = {
 			row: $('#assaultTeam-IsEnemyRow')
 		},
 		stat: {
-			pow: 9,
-			def: 50,
+			pow: 8,
+			def: 40,
 			components: ["soldier", "soldier"],
 			drops: "rocketLauncher"
 		}

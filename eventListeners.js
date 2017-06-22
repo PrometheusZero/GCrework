@@ -97,7 +97,8 @@ const eventListeners = {
 
 			updateDisplay();
 		}else{
-		
+			gameLog("Not enough space", "warning");
+		}
 	}),
 	//BUILDINGS - TRANSDUCERS
 	buyBarracks: $('#buyBarracks').click(function(){

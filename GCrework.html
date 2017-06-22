@@ -22,10 +22,10 @@
 					</div>
 				</nav>
 		</header>
-		
-		
+
+
 		<main>
-		
+
 			<div class="sidePanel">
 				<table id="resourceTable">
 					<thead>
@@ -117,7 +117,7 @@
 					</tbody>
 				</table>
 			</div>
-			
+
 			<div class="container">
 				<div class="row">
 					<div class="col s12">
@@ -128,7 +128,7 @@
 							<li class="tab col s2"><a href="#tab4">Options</a></li>
 						</ul>
 					</div>
-					
+
 					<!------------------>
 					<!-- PERSONEL TAB -->
 					<!------------------>
@@ -142,111 +142,443 @@
 									</div>
 								</div>
 							</div>
-							<!-- -->
+
+							<!-- CONSCRIPTS ROW -->
 							<div class="row">
 								<div class="col s12">
-									<a id="conscript-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-conscript">Generate Conscript</a>
-									<div class="tooltip_templates">
-										<span id="gen-conscript">Requirements:<br />None</span>
-									</div>
+									<a	id="conscript-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				None</div>">
+										Generate Conscript
+									</a>
 								</div>
 							</div>
-							<!-- -->
+
+							<!-- SOLDIERS ROW -->
 							<div class="row">
 								<div class="col s12">
-									<a id="soldier-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-soldier">Form Soldier</a>
-									<div class="tooltip_templates">
-										<span id="gen-soldier">Requirements:<br />1 Conscript<br />1 Rifle</span>
-									</div>
-									<a id="assaultTeam-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-assaultTeam">Form assaultTeam</a>
-									<div class="tooltip_templates">
-										<span id="gen-assaultTeam">Requirements:<br />2 Soldiers<br />1 Missile Launcher</span>
-									</div>
+									<a	id="soldier-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				1 Conscript<br />
+																				1 Rifle</div>">
+										Form Soldier
+									</a>
+									<a	id="assaultTeam-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 Soldiers<br />
+																				1 Rocket Launcher</div>">
+										Form assaultTeam
+									</a>
+									<a	id="mortarTeam-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 Soldiers<br />
+																				1 60mm Mortar</div>">
+										Form mortarTeam
+									</a>
 								</div>
 							</div>
-							<!-- -->
+
+							<!-- CORPORALS ROW -->
 							<div class="row">
 								<div class="col s12">
-									<a id="fireTeam-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-fireTeam">Form Fire Team</a>
-									<div class="tooltip_templates">
-										<span id="gen-fireTeam">Requirements:<br />1 Corporal<br />3 Soldiers<br />1 Automatic Rifle</span>
-									</div>
-									<a id="mortarSquad-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-mortarSquad">Form mortarSquad</a>
-									<div class="tooltip_templates">
-										<span id="gen-mortarSquad">Requirements:<br />1 Corporal<br />3 Soldiers<br />1 Mortar60mm</span>
-									</div>
-									<a id="assaultSquad-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-assaultSquad">Form assaultSquad</a>
-									<div class="tooltip_templates">
-										<span id="gen-assaultSquad">Requirements:<br />1 Corporal<br />2 assaultTeams</span>
-									</div>
-									<a id="mgTeam-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-mgTeam">Form mgTeam</a>
-									<div class="tooltip_templates">
-										<span id="gen-mgTeam">Requirements:<br />1 Corporal<br />3 Soldiers<br />1 MachineGun</span>
-									</div>
+									<a	id="fireTeam-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				3 Soldiers<br />
+																				1 Corporal</div>">
+										Form Fire Team
+									</a>
+									<a	id="mortarSquad-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				3 Mortar Teams<br />
+																				1 Corporal</div>">
+										Form mortarSquad
+									</a>
+									<a 	id="assaultSquad-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 Assault Teams<br />
+																				1 Corporal</div>">
+										Form assaultSquad
+									</a>
+									<a	id="mgTeam-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				3 Soldiers<br />
+																				1 Corporal<br />
+																				1 Machinegun</div>">
+										Form mgTeam
+									</a>
+									<a	id="heavyMortarSquad-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				5 Soldiers<br />
+																				1 Corporal<br />
+																				1 80mm Mortar</div>">
+										Form heavyMortarSquad
+									</a>
+									<a	id="antiArmourTeam-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				3 Soldiers<br />
+																				1 Corporal<br />
+																				2 Rocket Launchers</div>">
+										Form antiArmourTeam
+									</a>
 								</div>
 							</div>
-							<!-- -->
+
+							<!-- SERGEANTS ROW -->
 							<div class="row">
 								<div class="col s12">
-									<a id="rifleSquad-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-rifleSquad">Form Rifle Squad</a>
-									<div class="tooltip_templates">
-										<span id="gen-rifleSquad">Requirements:<br />1 Sergeant<br />3 Fire Teams</span>
-									</div>
-									<a id="assaultSection-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-assaultSection">Form assaultSection</a>
-									<div class="tooltip_templates">
-										<span id="gen-assaultSection">Requirements:<br />1 Sergeant<br />3 assaultSquad</span>
-									</div>
-									<a id="mgSquad-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-mgSquad">Form mgSquad</a>
-									<div class="tooltip_templates">
-										<span id="gen-mgSquad">Requirements:<br />1 Sergeant<br />2 mgTeam</span>
-									</div>
+									<a	id="rifleSquad-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				3 Fire Teams<br />
+																				1 Sergeant</div>">
+										Form Rifle Squad
+									</a>
+									<a	id="mortarSection-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				3 Mortar Squads<br />
+																				1 Sergeant</div>">
+										Form mortarSection
+									</a>
+									<a	id="assaultSection-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				3 Assault Squads<br />
+																				1 Sergeant</div>">
+										Form assaultSection
+									</a>
+									<a	id="mgSquad-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 MG Teams<br />
+																				1 Sergeant</div>">
+										Form mgSquad
+									</a>
+									<a	id="heavyMortarSectionHQ-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 Soldiers<br />
+																				1 Corporal<br />
+																				1 Sergeant</div>">
+										Form heavyMortarSectionHQ
+									</a>
+									<a	id="heavyMortarSection-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				4 Heavy Mortar Squads<br />
+																				1 Heavy Mortar Section HQ</div>">
+										Form heavyMortarSection
+									</a>
+									<a	id="antiArmourSquad-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 Anti Armour Teams<br />
+																				1 Sergeant</div>">
+										Form antiArmourSquad
+									</a>
+									<a	id="towSquad-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				4 Soldiers<br />
+																				2 Corporals<br />
+																				1 Sergeant<br />
+																				2 TOW Launchers</div>">
+										Form towSquad
+									</a>
+									<a	id="hmgSquad-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 Soldiers<br />
+																				1 Corporal<br />
+																				1 Sergeant<br />
+																				1 Heavy Machinegun</div>">
+										Form hmgSquad
+									</a>
 								</div>
 							</div>
-							<!-- -->
+
+							<!-- STAFF SERGEANTS ROW -->
 							<div class="row">
 								<div class="col s12">
-									<a id="mortarSection-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-mortarSection">Form mortarSection</a>
-									<div class="tooltip_templates">
-										<span id="gen-mortarSection">Requirements:<br />1 Staff Sergeant<br />3 mortarSquad</span>
-									</div>
-									<a id="mgSection-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-mgSection">Form mgSection</a>
-									<div class="tooltip_templates">
-										<span id="gen-mgSection">Requirements:<br />1 Staff Sergeant<br />3 mgSquad</span>
-									</div>
+									<a	id="mgSection-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				3 MG Squads<br />
+																				1 Staff Sergeant</div>">
+										Form mgSection
+									</a>
+									<a	id="antiArmourSection-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 Anit Armour Squads<br />
+																				1 Staff Sergeant</div>">
+										Form antiArmourSection
+									</a>
+									<a	id="towSection-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				4 TOW Squads<br />
+																				1 Staff Sergeant</div>">
+										Form towSection
+									</a>
+									<a	id="hmgSection-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 HMG Squads<br />
+																				1 Staff Sergeant</div>">
+										Form hmgSection
+									</a>
 								</div>
 							</div>
+
+							<!-- LIEUTENNANTS ROW -->
 							<div class="row">
 								<div class="col s12">
-									<a id="platoonHQ-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-platoonHQ">Form platoonHQ</a>
-									<div class="tooltip_templates">
-										<span id="gen-platoonHQ">Requirements:<br />1 Leiutenant<br />1 Staff Sergeant<br />1 Sergeant<br />1 Soldier</span>
-									</div>
-									<a id="riflePlatoon-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-riflePlatoon">Form riflePlatoon</a>
-									<div class="tooltip_templates">
-										<span id="gen-riflePlatoon">Requirements:<br />1 Platoon HQ<br />3 Rifle Squads</span>
-									</div>
-									<a id="weaponsPlatoon-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-weaponsPlatoon">Form weaponsPlatoon</a>
-									<div class="tooltip_templates">
-										<span id="gen-weaponsPlatoon">Requirements:<br />1 Platoon HQ<br />1 Mortar Section<br />1 Assault Section<br />1 MG Section</span>
-									</div>
+									<a	id="platoonHQ-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				1 Soldier<br />
+																				1 Sergeant<br />
+																				1 Staff Sergeant<br />
+																				1 Lieutenant</div>">
+										Form platoonHQ
+									</a>
+									<a	id="riflePlatoon-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				3 Rifle Squads<br />
+																				1 Platoon HQ</div>">
+										Form riflePlatoon
+									</a>
+									<a	id="weaponsPlatoon-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				1 Mortar Section<br />
+																				1 Assault Section<br />
+																				1 MG Section<br />
+																				1 Platoon HQ</div>">
+										Form weaponsPlatoon
+									</a>
+									<a	id="heavyMortarPlatoonHQ-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 Soldiers<br />
+																				1 Sergeant<br />
+																				1 Staff Sergeant<br />
+																				1 Lieutenant</div>">
+										Form heavyMortarPlatoonHQ
+									</a>
+									<a	id="heavyMortarPlatoon-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 Heavy Mortar Sections<br />
+																				1 Heavy Mortar Platoon HQ</div>">
+										Form heavyMortarPlatoon
+									</a>
+									<a	id="antiArmourPlatoonHQ-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				1 Soldier<br />
+																				1 Sergeant<br />
+																				1 Lieutenant</div>">
+										Form antiArmourPlatoonHQ
+									</a>
+									<a	id="antiArmourPlatoon-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				1 Anti Armour Section<br />
+																				1 TOW Section<br />
+																				1 Anti Armour Platoon HQ</div>">
+										Form antiArmourPlatoon
+									</a>
+									<a	id="hmgPlatoonHQ-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 Soldiers<br />
+																				1 Sergeant<br />
+																				1 Lieutenant</div>">
+										Form hmgPlatoonHQ
+									</a>
+									<a	id="hmgPlatoon-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				3 HMG Sections<br />
+																				1 HMG Platoon HQ</div>">
+										Form hmgPlatoon
+									</a>
 								</div>
 							</div>
-							<!-- -->
+
+							<!-- CAPTAINS ROW -->
 							<div class="row">
 								<div class="col s12">
-									<a id="rifleCompanyHQ-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-rifleCompanyHQ">Form rifleCompanyHQ</a>
-									<div class="tooltip_templates">
-										<span id="gen-rifleCompanyHQ">Requirements:<br />1 Captain<br />1 Leiutennant<br />2 Staff Sergeants<br />1 Corporal<br />1 Soldier</span>
-									</div>
-									<a id="rifleCompany-generateBtn" class="waves-effect waves-light btn-large tooltip" data-tooltip-content="#gen-rifleCompany">Form rifleCompany</a>
-									<div class="tooltip_templates">
-										<span id="gen-rifleCompany">Requirements:<br />1 Rifle Company HQ<br />3 Rifle Platoon<br />1 Weapon Platoon</span>
-									</div>
+									<a	id="rifleCompanyHQ-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				1 Soldier<br />
+																				1 Corporal<br />
+																				2 Staff Sergeants<br />
+																				1 Lieutenant<br />
+																				1 Captain</div>">
+										Form rifleCompanyHQ
+									</a>
+									<a	id="rifleCompany-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				3 Rifle Platoons<br />
+																				1 Weapons Platoon<br />
+																				1 Rifle Company HQ</div>">
+										Form rifleCompany
+									</a>
+								</div>
+							</div>
+
+							<!-- MAJORS ROW -->
+							<div class="row">
+								<div class="col s12">
+									<a	id="weaponsCompanyHQ-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				2 Soldiers<br />
+																				1 Corporal<br />
+																				1 Sergeant<br />
+																				1 Staff Sergeant<br />
+																				1 Captain<br />
+																				1 Major</div>">
+										Form weaponsCompanyHQ
+									</a>
+									<a	id="weaponsCompany-generateBtn"
+										class="waves-effect waves-light btn-large tooltipped"
+										data-position="left"
+										data-delay="50"
+										data-html="true"
+										data-tooltip="<div class='left-text'>	Requirements:<br />
+																				1 Heavy Mortar Platoon<br />
+																				1 Anti Armour Platoon<br />
+																				1 HMG Platoon<br />
+																				1 Weapons Company HQ</div>">
+										Form weaponsCompany
+									</a>
 								</div>
 							</div>
 						</div>
 					</div>
-					
+
 					<!------------------>
 					<!-- BUILDINGS TAB -->
 					<!------------------>
@@ -302,7 +634,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<!------------------>
 					<!-- MUSTER TAB -->
 					<!------------------>
@@ -414,28 +746,28 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<!------------------>
 					<!-- OPTIONS TAB -->
 					<!------------------>
 					<div id="tab4" class="col s12">Area 4</div>
 				</div>
 			</div>
-			
+
 			<div class="logPanel">
 				<h5>Event Log</h5>
 				<table id="logTable">
-					
+
 				</table>
 			</div>
-		
+
 		</main>
-		
-		
+
+
 		<footer>
-		
+
 		</footer>
-		
+
 		<script type="text/javascript" src="resources/jquery-2.1.1.js"></script>
 		<script type="text/javascript" src="resources/materialize/js/materialize.min.js"></script>
 		<script type="text/javascript" src="resources/dist/js/tooltipster.bundle.min.js"></script>
