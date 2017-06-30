@@ -94,10 +94,6 @@ $(document).ready(function(){
 		testObj.home.current += 100;
 	}
 	
-	$('.tooltip').tooltipster({
-		contentAsHTML: true
-	});
-	
 	gameLog("Welcome to Conquest! Recruit conscripts and send them to war!", "normal");
 	setTimeout(function(){
 		gameLog("Win wars to promote units and win space for buildings!", "normal");
@@ -162,6 +158,7 @@ const locations = {
 };
 
 function calculateForce(power){
+	//		n	+			between 0 and n			+			between 0 and n * space
 	return power + Math.ceil(Math.random() * power) + Math.ceil(Math.random() * power * resources.space.total);
 }
 

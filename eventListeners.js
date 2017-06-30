@@ -1,5 +1,7 @@
 const eventListeners = {
-	//PERSONNEL
+	///////////////////
+	// PERSONNEL TAB //
+	///////////////////
 	generateConscript: $('#conscript-generateBtn').click(function(){
 		combatant.conscript.home.total++;
 		combatant.conscript.home.current++;
@@ -44,7 +46,9 @@ const eventListeners = {
 			}
 		}
 	}),
-	//BUILDINGS - PRIMARIES
+	///////////////////////////
+	// BUILDINGS - PRIMARIES //
+	///////////////////////////
 	buyRecruitOffice: $('#buyRecruitOffice').click(function(){
 		if(resources.space.current > 0){
 			primaries.recruitOffice.total++;
@@ -100,7 +104,9 @@ const eventListeners = {
 			gameLog("Not enough space", "warning");
 		}
 	}),
-	//BUILDINGS - TRANSDUCERS
+	/////////////////////////////
+	// BUILDINGS - TRANSDUCERS //
+	/////////////////////////////
 	buyBarracks: $('#buyBarracks').click(function(){
 		if(resources.space.current > 0){
 			transducers.rifleBarracks.total++;
@@ -123,7 +129,9 @@ const eventListeners = {
 			gameLog("Not enough space", "warning");
 		}
 	}),
-	//MUSTER
+	////////////////
+	// MUSTER TAB //
+	////////////////
 	musterConscript: $('#conscript-muster-one').click(function(){
 		if(combatant.conscript.home.current >= 1){
 			combatant.conscript.home.current--;

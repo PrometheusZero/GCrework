@@ -1,9 +1,7 @@
 .sidePanel {
 	width:15%;
-/*	float:left;
-	clear:both;
-*/
-	position:fixed;
+	position:absolute;
+	top:64px;
 	left:0px;
 }
 
@@ -13,7 +11,7 @@
 
 .logPanel {
 	width:15%;
-	position:fixed;
+	position:absolute;
 	right:0px;
 	top:64px;
 }
